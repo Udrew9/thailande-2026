@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f2eb">
+  <meta name="description" content="Carnet de voyage en Thaïlande — du 7 au 22 décembre 2026. Phuket, Khao Lak, Chiang Mai et Bangkok.">
+  <title>Thaïlande 2026 — Carnet de voyage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="topline"><span>THAÏLANDE</span><span>7 — 22 DÉCEMBRE 2026</span><span>3 VOYAGEURS</span></div>
+  <header class="site-header">
+    <a class="brand" href="#accueil" aria-label="Retour à l'accueil"><span class="brand-mark">T.</span><span>LE CARNET<br><small>DE VOYAGE</small></span></a>
+    <button class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+    <nav class="nav">
+      <a href="#voyage">Le voyage</a><a href="#etapes">Les étapes</a><a href="#itineraire">Itinéraire</a><a href="#carte">La carte</a><a href="#pratique">À savoir</a>
+    </nav>
+    <a class="nav-cta" href="#hebergements">Nos logements <span>↗</span></a>
+  </header>
+
+  <main>
+    <section class="hero" id="accueil">
+      <div class="hero-image"></div>
+      <div class="hero-shade"></div>
+      <div class="hero-content">
+        <p class="eyebrow light">CARNET DE VOYAGE · ASIE DU SUD-EST</p>
+        <h1>La Thaïlande,<br><em>au fil des jours.</em></h1>
+        <p class="hero-sub">Des îles du sud aux montagnes du nord, jusqu'à l'énergie de Bangkok.</p>
+        <a class="hero-link" href="#voyage">DÉCOUVRIR LE VOYAGE <span>↓</span></a>
+      </div>
+      <div class="hero-stamp"><span>16</span><small>JOURS<br>SUR PLACE</small></div>
+      <div class="hero-bottom"><span>PHUKET</span><span>—</span><span>KHAO LAK</span><span>—</span><span>CHIANG MAI</span><span>—</span><span>BANGKOK</span></div>
+    </section>
+
+    <section class="intro section" id="voyage">
+      <div class="section-kicker">01 / LE VOYAGE</div>
+      <div class="intro-grid">
+        <div><p class="eyebrow">UN VOYAGE, QUATRE AMBIANCES</p><h2>Du bleu profond<br>aux lumières de la ville.</h2></div>
+        <div class="intro-copy"><p>Trois voyageurs, seize jours en Thaïlande et quatre bases pour prendre le temps de découvrir le pays. Au programme : sorties en mer, plages, nature, temples, cuisine locale et nuits animées.</p><p class="muted">Départ de France le 6 décembre 2026 · arrivée à Phuket le 7 décembre · retour depuis Bangkok le 22 décembre.</p></div>
+      </div>
+      <div class="stats">
+        <div><strong>3</strong><span>VOYAGEURS</span></div><div><strong>4</strong><span>ÉTAPES</span></div><div><strong>15</strong><span>NUITS</span></div><div><strong>16</strong><span>JOURS SUR PLACE</span></div>
+      </div>
+    </section>
+
+    <section class="stops section" id="etapes">
+      <div class="section-heading"><div><div class="section-kicker">02 / LES ÉTAPES</div><h2>Quatre escales,<br><em>un seul voyage.</em></h2></div><p>Le parcours descend dans le sud pour les îles et la mer d'Andaman, remonte vers les montagnes du nord, puis se termine dans la capitale.</p></div>
+      <div class="stop-grid">
+        <article class="stop-card stop-phuket"><div class="stop-photo"></div><div class="stop-info"><span class="stop-number">01 / 07—11 DÉC.</span><h3>Phuket</h3><p>Plages, excursions en bateau et premières découvertes du sud thaïlandais.</p><div class="stop-meta"><b>4 nuits</b><span>RAWAI · SUD DE L'ÎLE</span></div><a href="#stay-phuket">Voir le logement ↗</a></div></article>
+        <article class="stop-card stop-khaolak"><div class="stop-photo"></div><div class="stop-info"><span class="stop-number">02 / 11—14 DÉC.</span><h3>Khao Lak</h3><p>Une parenthèse plus calme, avec les îles Similan en point d'orgue.</p><div class="stop-meta"><b>3 nuits</b><span>PHANG NGA</span></div><a href="#stay-khaolak">Voir le logement ↗</a></div></article>
+        <article class="stop-card stop-chiangmai"><div class="stop-photo"></div><div class="stop-info"><span class="stop-number">03 / 14—19 DÉC.</span><h3>Chiang Mai</h3><p>Temples, cuisine du nord, montagnes et rencontre avec les éléphants.</p><div class="stop-meta"><b>5 nuits</b><span>NORD DE LA THAÏLANDE</span></div><a href="#stay-chiangmai">Voir le logement ↗</a></div></article>
+        <article class="stop-card stop-bangkok"><div class="stop-photo"></div><div class="stop-info"><span class="stop-number">04 / 19—22 DÉC.</span><h3>Bangkok</h3><p>Marchés, temples, street food et dernières heures avant le retour.</p><div class="stop-meta"><b>3 nuits</b><span>SUלקKHUMVIT 71</span></div><a href="#stay-bangkok">Voir le logement ↗</a></div></article>
+      </div>
+    </section>
+
+    <section class="lodgings section" id="hebergements">
+      <div class="section-heading"><div><div class="section-kicker">03 / LES HÉBERGEMENTS</div><h2>Nos points<br><em>de chute.</em></h2></div><p>Les hébergements communiqués, avec leurs dates de séjour et les liens Booking. Les photos d'ambiance ne sont pas des photos contractuelles des établissements.</p></div>
+      <div class="lodging-list">
+        <article class="lodging-card" id="stay-phuket">
+          <div class="lodging-index">01</div><div class="lodging-main"><div class="lodging-top"><span class="tag">PHUKET · RAWAI</span><span class="date-label">7 → 11 DÉCEMBRE · 4 NUITS</span></div><h3>Blue Palm Seafront Resort Phuket</h3><p class="address">54/14 Moo 6, Rawai Beach, Phuket, Thaïlande</p><div class="lodging-details"><span><b>Arrivée</b> 14h–22h</span><span><b>Départ</b> avant 12h</span><span><b>Réservation</b> 3 adultes · 2 chambres</span></div><div class="lodging-actions"><a class="button button-dark" href="https://www.booking.com/hotel/th/blue-palm-seafront-resort-phuket.fr.html" target="_blank" rel="noopener">Voir sur Booking ↗</a><a class="text-link" href="https://www.google.com/maps/search/?api=1&query=Blue+Palm+Seafront+Resort+Phuket" target="_blank" rel="noopener">Ouvrir la carte ↗</a></div></div>
+        </article>
+        <article class="lodging-card" id="stay-khaolak">
+          <div class="lodging-index">02</div><div class="lodging-main"><div class="lodging-top"><span class="tag">KHAO LAK · PHANG NGA</span><span class="date-label">11 → 14 DÉCEMBRE · 3 NUITS</span></div><h3>Khaolak Relax Resort</h3><p class="address">30/47 Moo 3, Khuk Khak, Takua Pa, Phang Nga 82190, Thaïlande</p><div class="lodging-details"><span><b>Arrivée / départ</b> à confirmer</span><span><b>Réservation</b> 3 adultes · 2 chambres</span></div><div class="lodging-actions"><a class="button button-dark" href="https://www.booking.com/hotel/th/khaolak-relax-resort.fr.html" target="_blank" rel="noopener">Voir sur Booking ↗</a><a class="text-link" href="https://www.google.com/maps/search/?api=1&query=Khaolak+Relax+Resort" target="_blank" rel="noopener">Ouvrir la carte ↗</a></div></div>
+        </article>
+        <article class="lodging-card" id="stay-chiangmai">
+          <div class="lodging-index">03</div><div class="lodging-main"><div class="lodging-top"><span class="tag">CHIANG MAI · HANG DONG</span><span class="date-label">14 → 19 DÉCEMBRE · 5 NUITS</span></div><h3>At Leaf Villa</h3><p class="address">225/329 Kad Farang, Chiangmai-Hang Dong Road, Ban Waen, Hang Dong, Chiang Mai 50230, Thaïlande</p><div class="lodging-details"><span><b>Arrivée</b> 14h</span><span><b>Départ</b> 12h</span><span><b>Réservation</b> 3 adultes · 2 chambres</span></div><div class="lodging-actions"><a class="button button-dark" href="https://www.booking.com/hotel/th/at-leaf-villa.fr.html" target="_blank" rel="noopener">Voir sur Booking ↗</a><a class="text-link" href="https://www.google.com/maps/search/?api=1&query=At+Leaf+Villa+Chiang+Mai" target="_blank" rel="noopener">Ouvrir la carte ↗</a></div></div>
+        </article>
+        <article class="lodging-card" id="stay-bangkok">
+          <div class="lodging-index">04</div><div class="lodging-main"><div class="lodging-top"><span class="tag">BANGKOK · SUKHUMVIT 71</span><span class="date-label">19 → 22 DÉCEMBRE · 3 NUITS</span></div><h3>Somerset Sukhumvit 71 Bangkok</h3><p class="address">1015/29 Pridi Banomyong 45, Sukhumvit 71 Road, Khlong Tan Nuea, Watthana, Bangkok 10110, Thaïlande</p><div class="lodging-details"><span><b>Arrivée</b> 14h</span><span><b>Départ</b> avant 12h</span><span><b>Réservation</b> 3 adultes · 2 chambres</span></div><div class="lodging-actions"><a class="button button-dark" href="https://www.booking.com/hotel/th/somerset-sukhumvit-71-bangkok.fr.html" target="_blank" rel="noopener">Voir sur Booking ↗</a><a class="text-link" href="https://www.google.com/maps/search/?api=1&query=Somerset+Sukhumvit+71+Bangkok" target="_blank" rel="noopener">Ouvrir la carte ↗</a></div></div>
+        </article>
+      </div>
+      <p class="small-note">Les tarifs, conditions d'annulation, catégories de chambres et numéros de réservation ne sont pas renseignés ici : vérifiez-les directement dans vos confirmations Booking.</p>
+    </section>
+
+    <section class="route section" id="itineraire">
+      <div class="section-heading"><div><div class="section-kicker">04 / JOUR APRÈS JOUR</div><h2>Le fil du<br><em>voyage.</em></h2></div><p>Le programme prévu dans votre document de voyage. Les horaires précis et certains choix d'excursions restent à définir.</p></div>
+      <div class="route-controls" role="group" aria-label="Filtrer les étapes"><button class="filter active" data-filter="all">Tout le voyage</button><button class="filter" data-filter="phuket">Phuket</button><button class="filter" data-filter="khaolak">Khao Lak</button><button class="filter" data-filter="chiangmai">Chiang Mai</button><button class="filter" data-filter="bangkok">Bangkok</button></div>
+      <div class="timeline">
+        <article class="day" data-place="phuket"><div class="day-date"><span>LUN.</span><b>07</b><small>DÉC.</small></div><div class="day-body"><div class="day-heading"><span class="day-place">PHUKET · ARRIVÉE</span><span class="day-kind">INSTALLATION</span></div><h3>Bienvenue en Thaïlande</h3><p>Arrivée à Phuket, transfert vers le sud de l'île, installation à l'hôtel et première plage selon l'heure d'arrivée.</p><a href="https://www.google.com/maps/search/?api=1&query=Rawai+Beach+Phuket" target="_blank" rel="noopener">Repérer Rawai ↗</a></div></article>
+        <article class="day" data-place="phuket"><div class="day-date"><span>MAR.</span><b>08</b><small>DÉC.</small></div><div class="day-body"><div class="day-heading"><span class="day-place">PHUKET · KRABI</span><span class="day-kind">EXCURSION EN MER</span></div><h3>Les îles de Krabi</h3><p>Sortie en bateau vers les 4 Islands ou les Hong Islands. Le choix de l'excursion reste à confirmer.</p></div></article>
+        <article class="day" data-place="phuket"><div class="day-date"><span>MER.</span><b>09</b><small>DÉC.</small></div><div class="day-body"><div class="day-heading"><span class="day-place">PHUKET · KOH PHI PHI</span><span class="day-kind">EXCURSION EN MER</span></div><h3>Maya Bay & snorkeling</h3><p>Journée à Koh Phi Phi, avec Maya Bay et une session de snorkeling selon les conditions locales.</p></div></article>
+        <article class="day" data-place="phuket"><div class="day-date"><span>JEU.</span><b>10</b><small>DÉC.</small></div><div class="day-body"><div class="day-heading"><span class="day-place">PHUKET · PHANG NGA</span><span class="day-kind">EXCURSION EN MER</span></div><h3>James Bond Island</h3><p>Découverte de la baie de Phang Nga et de James Bond Island.</p></div></article>
+        <article class="day" data-place="khaolak"><div class="day-date"><span>VEN.</span><b>11</b><small>DÉC.</small></div><div class="day-body"><div class="day-heading"><span class="day-place">PHUKET → KHAO LAK</span><span class="day-kind">PLAGE & TRANSFERT</span></div><h3>Freedom Beach, puis la route du nord</h3><p>Freedom Beach le matin, au sud de Patong, puis transfert vers Khao Lak et installation. Compter environ 1h30 à 2h de route depuis le sud de Phuket.</p></div></article>
+        <article class="day" data-place="khaolak"><div class="day-date"><span>SAM.</span><b>12</b><small>DÉC.</small></div><div class="day-body"><div class="day-heading"><span class="day-place">KHAO LAK · SIMILAN</span><span class="day-kind">EXCURSION EN MER</span></div><h3>Les îles Similan</h3><p>Départ très tôt pour une journée dans l'archipel des Similan. Vérifier l'ouverture officielle, la météo et les disponibilités avant réservation.</p><span class="notice">À confirmer : ouverture saisonnière et conditions météo.</span></div></article>
+        <article class="day" data-place="khaolak"><div class="day-date"><span>DIM.</span><b>13</b><small>DÉC.</small></div><div class="day-body"><div class="day-heading"><span class="day-place">KHAO LAK</span><span class="day-kind">TEMPS LIBRE</span></div><h3>Une journée pour souffler</h3><p>Journée de repos à Khao Lak, sans programme imposé.</p></div></article>
+        <article class="day" data-place="chiangmai"><div class="day-date"><span>LUN.</span><b>14</b><small>DÉC.</small></div><div class="day-body"><div class="day-heading"><span class="day-place">KHAO LAK → CHIANG MAI</span><span class="day-kind">TRANSFERT & VOL</span></div><h3>Du sud au nord</h3><p>Route le matin vers l'aéroport de Phuket (environ 1h15 à 1h30), puis vol intérieur vers Chiang Mai prévu en début d'après-midi. Vieille ville et Night Bazaar à l'arrivée si le timing le permet.</p><span class="notice">Vol intérieur à réserver — horaire non confirmé.</span></div></article>
+        <article class="day" data-place="chiangmai"><div class="day-date"><span>MAR.</span><b>15</b><small>DÉC.</small></div><div class="day-body"><div class="day-heading"><span class="day-place">CHIANG MAI</span><span class="day-kind">CULTURE & CUISINE</span></div><h3>Temples et cuisine thaïlandaise</h3><p>Wat Chedi Luang et Wat Phra Singh dans la vieille ville, puis cours de cuisine.</p></div></article>
+        <article class="day" data-place="chiangmai"><div class="day-date"><span>MER.</span><b>16</b><small>DÉC.</small></div><div class="day-body"><div class="day-heading"><span class="day-place">CHIANG MAI · DOI INTHANON</span><span class="day-kind">NATURE</span></div><h3>Au sommet de la Thaïlande</h3><p>Excursion au parc national de Doi Inthanon, avec cascades et paysages de rizières.</p></div></article>
+        <article class="day" data-place="chiangmai"><div class="day-date"><span>JEU.</span><b>17</b><small>DÉC.</small></div><div class="day-body"><div class="day-heading"><span class="day-place">CHIANG MAI</span><span class="day-kind">ANIMAUX</span></div><h3>À la rencontre des éléphants</h3><p>Visite d'un sanctuaire d'éléphants. Le choix souhaité est un lieu sans monte sur les animaux.</p><span class="notice">Choisir un sanctuaire respectueux, sans balade à dos d'éléphant.</span></div></article>
+        <article class="day" data-place="chiangmai"><div class="day-date"><span>VEN.</span><b>18</b><small>DÉC.</small></div><div class="day-body"><div class="day-heading"><span class="day-place">CHIANG MAI</span><span class="day-kind">CULTURE & VILLE</span></div><h3>Doi Suthep et Nimman</h3><p>Visite du temple de Doi Suthep, puis découverte du quartier de Nimman.</p></div></article>
+        <article class="day" data-place="bangkok"><div class="day-date"><span>SAM.</span><b>19</b><small>DÉC.</small></div><div class="day-body"><div class="day-heading"><span class="day-place">CHIANG MAI → BANGKOK</span><span class="day-kind">VOL & STREET FOOD</span></div><h3>Cap sur la capitale</h3><p>Vol intérieur vers Bangkok le matin ou en milieu de journée, installation à l'hôtel et dîner dans le quartier de Chinatown (Yaowarat).</p><span class="notice">Vol intérieur à réserver — horaire non confirmé.</span></div></article>
+        <article class="day" data-place="bangkok"><div class="day-date"><span>DIM.</span><b>20</b><small>DÉC.</small></div><div class="day-body"><div class="day-heading"><span class="day-place">BANGKOK</span><span class="day-kind">MARCHÉ & CULTURE</span></div><h3>Chatuchak et Jim Thompson House</h3><p>Marché de Chatuchak le matin, puis Jim Thompson House ou découverte du centre-ville.</p></div></article>
+        <article class="day" data-place="bangkok"><div class="day-date"><span>LUN.</span><b>21</b><small>DÉC.</small></div><div class="day-body"><div class="day-heading"><span class="day-place">BANGKOK</span><span class="day-kind">GRANDS INCONTOURNABLES</span></div><h3>Les temples et le fleuve</h3><p>Grand Palace, Wat Pho, Wat Arun et croisière sur le fleuve Chao Phraya.</p></div></article>
+        <article class="day" data-place="bangkok"><div class="day-date"><span>MAR.</span><b>22</b><small>DÉC.</small></div><div class="day-body"><div class="day-heading"><span class="day-place">BANGKOK → FRANCE</span><span class="day-kind">RETOUR</span></div><h3>Derniers instants en Thaïlande</h3><p>Vol international retour vers la France. Prévoir d'arriver à l'aéroport environ 3 heures avant le départ.</p></div></article>
+      </div>
+    </section>
+
+    <section class="map-section section" id="carte">
+      <div class="section-heading"><div><div class="section-kicker">05 / LE PARCOURS</div><h2>La Thaïlande<br><em>sur la carte.</em></h2></div><p>Les quatre bases du séjour, du sud vers le nord puis retour dans la capitale. Les liaisons aériennes intérieures sont prévues mais ne sont pas encore confirmées.</p></div>
+      <div class="map-wrap"><div id="travel-map" aria-label="Carte des quatre étapes du voyage"></div><div class="map-legend"><div><i class="dot sea"></i><span>Sud · mer d'Andaman</span></div><div><i class="dot north"></i><span>Nord · Chiang Mai</span></div><div><i class="dot city"></i><span>Centre · Bangkok</span></div></div></div>
+      <div class="route-summary"><div><span>01</span><b>Phuket → Khao Lak</b><small>Route · env. 1h30 à 2h</small></div><div><span>02</span><b>Phuket → Chiang Mai</b><small>Vol intérieur · à réserver</small></div><div><span>03</span><b>Chiang Mai → Bangkok</b><small>Vol intérieur · à réserver</small></div></div>
+    </section>
+
+    <section class="practical section" id="pratique">
+      <div class="section-heading"><div><div class="section-kicker">06 / AVANT DE PARTIR</div><h2>Les repères<br><em>à garder en tête.</em></h2></div><p>Les informations pratiques reprises de votre document et les points à vérifier avant le départ.</p></div>
+      <div class="practical-grid">
+        <article><span class="practical-icon">↗</span><h3>Les vols intérieurs</h3><p>Priorité à la réservation des vols Phuket → Chiang Mai le 14 décembre et Chiang Mai → Bangkok le 19 décembre. Les horaires restent à choisir.</p></article>
+        <article><span class="practical-icon">≈</span><h3>Les excursions en bateau</h3><p>Phi Phi, James Bond Island, Krabi et Similan se font en bateau. Les excursions incluent souvent une prise en charge à l'hôtel : à vérifier auprès de chaque prestataire.</p></article>
+        <article><span class="practical-icon">☀</span><h3>Les îles Similan</h3><p>Ouverture saisonnière généralement de mi-octobre à mi-mai environ. Vérifier les dates officielles, la météo et l'état de la mer avant de réserver.</p></article>
+        <article><span class="practical-icon">⌁</span><h3>Se déplacer à Phuket</h3><p>Les déplacements sur l'île se font par la route. Comparer les tarifs des taxis avec Grab ou Bolt ; les taxis peuvent être chers.</p></article>
+        <article><span class="practical-icon">◷</span><h3>Les marges de sécurité</h3><p>Prévoir suffisamment de temps pour rejoindre l'aéroport de Phuket le 14 décembre et une marge importante avant le vol international du 22 décembre.</p></article>
+        <article><span class="practical-icon">✳</span><h3>Haute saison</h3><p>Décembre est une période très demandée. Réserver rapidement les vols et activités, en privilégiant si possible des conditions d'annulation flexibles.</p></article>
+      </div>
+      <div class="checklist"><div><p class="eyebrow">PETITE CHECKLIST</p><h3>À réserver / confirmer</h3></div><ul><li><label><input type="checkbox"> Vol Phuket → Chiang Mai (14 déc.)</label></li><li><label><input type="checkbox"> Vol Chiang Mai → Bangkok (19 déc.)</label></li><li><label><input type="checkbox"> Excursion Krabi : 4 Islands ou Hong Islands</label></li><li><label><input type="checkbox"> Excursion Koh Phi Phi</label></li><li><label><input type="checkbox"> James Bond Island / baie de Phang Nga</label></li><li><label><input type="checkbox"> Ouverture et excursion Similan</label></li><li><label><input type="checkbox"> Cours de cuisine à Chiang Mai</label></li><li><label><input type="checkbox"> Sanctuaire d'éléphants sans monte</label></li></ul><p class="check-note">Cette checklist est enregistrée dans le navigateur de l'appareil utilisé.</p></div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="footer-top"><a class="brand brand-footer" href="#accueil"><span class="brand-mark">T.</span><span>LE CARNET<br><small>DE VOYAGE</small></span></a><p>THAÏLANDE · DÉCEMBRE 2026<br><span>Trois voyageurs, quatre étapes, mille souvenirs à venir.</span></p><a href="#accueil" class="back-top">RETOUR EN HAUT ↑</a></div><div class="footer-bottom"><span>7 — 22 DÉCEMBRE 2026</span><span>FAIT AVEC SOIN POUR LE VOYAGE</span></div></footer>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="script.js"></script>
+</body>
+</html>
