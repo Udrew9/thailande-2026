@@ -276,3 +276,43 @@ body{font-size:18px;line-height:1.75}
  .nav a{font-size:16px!important;padding:7px 0}
  .nav-cta{font-size:14px!important}
 }
+
+
+/* Hébergements : galerie plus généreuse et deux vues par destination */
+.lodging-card{grid-template-columns:minmax(330px,42%) 48px minmax(0,1fr);gap:24px;align-items:center}
+.hotel-gallery{display:grid;grid-template-columns:1fr 0.62fr;gap:8px;align-self:stretch;min-height:270px}
+.hotel-gallery>a{height:100%;min-height:270px}
+.hotel-gallery-secondary{position:relative;min-height:270px;overflow:hidden}
+.hotel-gallery-secondary img{width:100%;height:100%;object-fit:cover;display:block}
+.hotel-gallery-secondary span{position:absolute;left:0;right:0;bottom:0;padding:10px;background:linear-gradient(transparent,#1c2b22d9);color:white;font-size:11px}
+.hotel-gallery img{display:block}
+.lodging-index{align-self:start;padding-top:5px}
+.lodging-main{min-width:0}
+@media(max-width:1000px){
+ .lodging-card{grid-template-columns:minmax(260px,40%) 38px minmax(0,1fr);gap:16px}
+ .hotel-gallery{grid-template-columns:1fr .48fr;min-height:230px}
+ .hotel-gallery>a,.hotel-gallery-secondary{min-height:230px}
+}
+@media(max-width:800px){
+ .lodging-card{grid-template-columns:1fr;gap:14px}
+ .hotel-gallery{min-height:260px;grid-template-columns:1fr .62fr}
+ .hotel-gallery>a,.hotel-gallery-secondary{min-height:260px}
+ .lodging-index{display:none}
+}
+
+/* Frise illustrée : une photo à gauche de chaque journée */
+.timeline{max-width:1240px}
+.day{grid-template-columns:76px minmax(210px,30%) minmax(0,1fr);gap:24px;align-items:stretch}
+.day-visual{position:relative;min-height:220px;overflow:hidden;background:#d8d9ce}
+.day-visual img{width:100%;height:100%;min-height:220px;object-fit:cover;display:block;transition:transform .45s}
+.day-visual:hover img{transform:scale(1.045)}
+.day-visual span{position:absolute;left:0;right:0;bottom:0;padding:24px 12px 10px;background:linear-gradient(transparent,rgba(24,39,30,.78));color:white;font-size:11px;letter-spacing:.04em}
+.day-body{min-width:0}
+@media(max-width:900px){
+ .day{grid-template-columns:60px minmax(160px,27%) minmax(0,1fr);gap:14px}
+ .day-visual,.day-visual img{min-height:200px}
+}
+@media(max-width:650px){
+ .day{grid-template-columns:49px minmax(0,1fr);gap:12px}
+ .day-visual{display:none}
+}
