@@ -92,3 +92,165 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid #9a
 @media(prefers-reduced-motion:reduce){
  *,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
 }
+
+
+/* Mise à l'échelle générale : typographie et interactions plus lisibles */
+body{font-size:18px;line-height:1.75}
+.topline{height:38px;font-size:11px}
+.site-header{height:90px}
+.brand{font-size:12px;gap:13px}
+.brand small{font-size:9px}
+.brand-mark{width:43px;height:43px;font-size:24px}
+.nav{gap:36px}
+.nav a,.nav-cta{font-size:14px}
+.nav-cta{padding:13px 18px}
+.hero{min-height:620px}
+.hero-content{max-width:700px}
+.eyebrow,.section-kicker{font-size:11px}
+.hero-sub{font-size:18px;line-height:1.8;max-width:490px}
+.hero-link{font-size:12px;padding:15px 0;gap:30px}
+.hero-bottom{font-size:11px;gap:17px}
+.hero-stamp{width:128px;height:128px}
+.hero-stamp span{font-size:48px}
+.hero-stamp small{font-size:10px}
+.section{padding:110px 8%}
+.section-heading>p,.intro-copy{font-size:18px;line-height:1.8}
+.muted{font-size:14px}
+.stats{padding:34px 0}
+.stats strong{font-size:52px}
+.stats span{font-size:11px}
+.stop-grid{gap:22px}
+.stop-photo{height:265px}
+.stop-info{padding:28px}
+.stop-number,.stop-meta span{font-size:11px}
+.stop-info h3{font-size:38px}
+.stop-info p{font-size:16px;line-height:1.75;min-height:0}
+.stop-meta{padding-top:17px}
+.stop-meta b{font-size:25px}
+.stop-info>a{font-size:14px;padding-bottom:6px}
+.destination-details{gap:26px}
+.destination-details article>div{padding:38px 44px}
+.destination-details h3{font-size:40px}
+.destination-details p{font-size:17px;line-height:1.85}
+.destination-details a{font-size:15px}
+.lodging-card{padding-top:40px;padding-bottom:40px;gap:36px}
+.lodging-index{font-size:34px}
+.tag{font-size:10px;padding:8px 12px}
+.date-label{font-size:11px}
+.lodging-main h3{font-size:38px}
+.address,.lodging-details{font-size:16px}
+.lodging-details{gap:22px}
+.lodging-actions{gap:26px;margin-top:26px}
+.button{font-size:14px;padding:15px 21px}
+.text-link{font-size:15px}
+.small-note{font-size:13px}
+.route-controls{top:90px;gap:10px}
+.filter{font-size:15px;padding:13px 20px}
+.timeline{max-width:980px;padding-left:48px}
+.day{grid-template-columns:82px 1fr;gap:32px;padding-bottom:36px}
+.day-date span,.day-date small{font-size:10px}
+.day-date b{font-size:44px}
+.day-body{padding:32px 36px}
+.day-place,.day-kind{font-size:11px}
+.day-body h3{font-size:34px}
+.day-body p{font-size:17px;line-height:1.8}
+.day-body>a{font-size:14px}
+.day-details summary{font-size:15px;padding:17px 0 5px}
+.details-arrow{font-size:26px}
+.day-detail-content li{grid-template-columns:120px 1fr;gap:18px;padding-bottom:18px}
+.day-detail-content time{font-size:14px}
+.day-detail-content li b{font-size:15px}
+.day-detail-content li p{font-size:14px;line-height:1.75}
+.day-cost{font-size:15px;padding:16px 18px}
+.day-caveat{font-size:13px!important}
+.notice{font-size:13px;padding:8px 12px}
+.map-wrap #travel-map{height:500px}
+.map-legend{font-size:13px}
+.route-summary b{font-size:14px}
+.route-summary small{font-size:12px}
+.practical-grid article{padding:30px 28px;min-height:210px}
+.practical-grid h3{font-size:27px}
+.practical-grid p{font-size:16px;line-height:1.8}
+.checklist{padding:38px 42px}
+.checklist h3{font-size:32px}
+.checklist li{font-size:16px}
+.check-note{font-size:12px}
+.footer{padding:50px 8% 24px}
+.footer-top p{font-size:21px}
+.footer-top p span{font-size:12px}
+.back-top{font-size:11px}
+.footer-bottom{font-size:10px}
+@media(max-width:900px){
+ .section{padding:90px 7%}
+ .stop-photo{height:220px}
+ .stop-info h3{font-size:32px}
+ .stop-info p{font-size:14px}
+ .lodging-main h3{font-size:32px}
+ .day-body{padding:25px}
+}
+@media(max-width:650px){
+ .topline{height:32px;font-size:8px}
+ .site-header{height:72px}
+ .brand{font-size:10px}
+ .brand small{font-size:8px}
+ .brand-mark{width:36px;height:36px;font-size:21px}
+ .nav{top:72px}
+ .nav a,.nav-cta{font-size:14px}
+ .nav-cta{padding:10px 13px}
+ .hero{min-height:600px}
+ .hero-sub{font-size:16px}
+ .hero-link{font-size:11px}
+ .hero-bottom{font-size:8px}
+ .hero-stamp{width:86px;height:86px}
+ .hero-stamp span{font-size:31px}
+ .hero-stamp small{font-size:8px}
+ .section{padding:68px 6%}
+ .section-heading>p,.intro-copy{font-size:16px}
+ .stats strong{font-size:40px}
+ .stats span{font-size:9px}
+ .stop-grid{gap:11px}
+ .stop-photo{height:155px}
+ .stop-info{padding:16px}
+ .stop-info h3{font-size:26px}
+ .stop-info p{font-size:12px;line-height:1.65}
+ .stop-number,.stop-meta span{font-size:9px}
+ .stop-meta b{font-size:20px}
+ .stop-info>a{font-size:12px}
+ .destination-details article>div{padding:22px}
+ .destination-details h3{font-size:29px}
+ .destination-details p{font-size:14px}
+ .destination-details a{font-size:13px}
+ .lodging-card{padding:25px 0;gap:12px}
+ .lodging-main h3{font-size:27px}
+ .address,.lodging-details{font-size:13px}
+ .tag{font-size:9px}
+ .date-label{font-size:9px}
+ .button{font-size:12px;padding:12px 15px}
+ .text-link{font-size:13px}
+ .route-controls{top:72px;padding:9px 0;gap:6px}
+ .filter{font-size:12px;padding:9px 13px}
+ .timeline{padding-left:25px}
+ .day{grid-template-columns:49px 1fr;gap:12px}
+ .day-date span,.day-date small{font-size:8px}
+ .day-date b{font-size:27px}
+ .day-body{padding:17px}
+ .day-place,.day-kind{font-size:9px}
+ .day-body h3{font-size:23px}
+ .day-body p{font-size:13px;line-height:1.7}
+ .day-details summary{font-size:12px}
+ .day-detail-content li{grid-template-columns:1fr;gap:3px}
+ .day-detail-content time{font-size:12px}
+ .day-detail-content li b{font-size:13px}
+ .day-detail-content li p{font-size:12px}
+ .day-cost{font-size:12px}
+ .day-caveat{font-size:11px!important}
+ .map-wrap #travel-map{height:340px}
+ .map-legend{font-size:10px}
+ .practical-grid h3{font-size:23px}
+ .practical-grid p{font-size:14px}
+ .checklist{padding:24px 20px}
+ .checklist h3{font-size:26px}
+ .checklist li{font-size:13px}
+ .footer-top p{font-size:17px}
+ .footer-bottom{font-size:8px}
+}
