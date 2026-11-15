@@ -436,3 +436,19 @@ body{font-size:18px;line-height:1.75}
   .countdown-clock div{min-width:40px}
   .countdown-clock b{font-size:25px}
 }
+
+
+/* Couverture mobile : titre plus discret et texte mieux contenu */
+@media(max-width:650px){
+  .hero-content{top:13%;left:7%;right:7%;max-width:300px}
+  .hero-content .eyebrow{font-size:8px;letter-spacing:.13em;line-height:1.5}
+  .hero h1{font-size:clamp(36px,10vw,46px);line-height:1;margin:13px 0}
+  .hero-sub{max-width:235px;font-size:12px;line-height:1.5}
+  .hero-link{font-size:9px;letter-spacing:.12em;margin-top:16px;gap:16px}
+}
+@media(max-width:380px){
+  .hero-content{top:12%;max-width:260px}
+  .hero h1{font-size:36px;margin:11px 0}
+  .hero-sub{font-size:11px;max-width:210px}
+  .hero-link{font-size:8px;margin-top:13px}
+}
