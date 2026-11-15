@@ -6,7 +6,7 @@ if(window.L){const map=L.map('travel-map',{scrollWheelZoom:false}).setView([15.7
 document.querySelectorAll('.stop-card').forEach((card,i)=>{const ids=['#fiche-phuket','#fiche-khaolak','#fiche-chiangmai','#fiche-bangkok'];const a=card.querySelector('.stop-info>a');if(a){a.href=ids[i];a.textContent='Découvrir cette étape ↗';}});
 
 
-// Compte à rebours jusqu'au départ de France : 7 décembre 2026 à 00:00.
+// Compte à rebours jusqu'à l'arrivée à Phuket : 7 décembre 2026 à 00:00.
 (function(){
  const target=new Date('2026-12-07T00:00:00+01:00').getTime();
  const update=()=>{
@@ -47,7 +47,8 @@ document.querySelectorAll('img').forEach(img=>{
   else if(/hôtel|hotel|resort|villa/.test(alt))id='photo-1540541338287-41700207dee6';
   else if(/mer|plage|island|phi phi|similan|bateau|lagon/.test(alt))id='photo-1507525428034-b723cf961d3e';
   img.src='https://images.unsplash.com/'+id+'?auto=format&fit=crop&w=1000&q=80';
- },{once:true});
+ });
+ if(img.complete && img.naturalWidth===0) img.dispatchEvent(new Event('error'));
 });
 
 // Galerie plein écran : cliquer sur une photo pour l'agrandir.
@@ -63,3 +64,14 @@ document.querySelectorAll('img').forEach(img=>{
   img.addEventListener('click',open);img.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}});
  });
 })();
+
+
+// Vérification aussi des images utilisées en arrière-plan des cartes de destination.
+document.querySelectorAll('.stop-photo').forEach(el=>{
+ const bg=getComputedStyle(el).backgroundImage;
+ const match=bg.match(/url\(["']?(.*?)["']?\)/);
+ if(!match)return;
+ const probe=new Image();
+ probe.onerror=()=>{el.style.backgroundImage='linear-gradient(0deg,rgba(24,39,30,.12),rgba(24,39,30,.02)),url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80")';};
+ probe.src=match[1];
+});
