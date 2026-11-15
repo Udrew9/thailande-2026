@@ -333,3 +333,20 @@ body{font-size:18px;line-height:1.75}
 .hotel-gallery img,.day-visual img,.destination-details img{cursor:zoom-in}
 @media(max-width:800px){.countdown-strip{grid-template-columns:1fr;gap:14px;padding:24px 7%;text-align:center}.countdown-clock{order:2}.countdown-date{order:3}.trip-calculator{grid-template-columns:1fr;gap:18px;padding:25px 20px}.calculator-heading h3{font-size:32px}}
 @media(max-width:520px){.calculator-options{grid-template-columns:1fr}.countdown-clock{gap:12px}.countdown-clock b{font-size:29px}}
+
+
+/* Guide gourmand : adresses et spécialités par étape */
+.food-intro{display:grid;grid-template-columns:.7fr 1.3fr;gap:30px;align-items:start;margin:5px 0 35px;padding:26px 30px;border-left:3px solid #9aa88c;background:#eeece3}
+.food-intro .eyebrow{color:#657766;letter-spacing:.16em}.food-intro p{margin:0;font:21px/1.55 "Playfair Display",serif;color:#314438}
+.food-dishes{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:65px}
+.food-dish{display:grid;grid-template-columns:42px 1fr;gap:8px 13px;align-items:start;padding:20px;background:#fff;border:1px solid #e6e3d9;min-height:145px}
+.food-emoji{grid-row:span 2;font-size:27px}.food-dish h3{margin:0 0 5px;font:22px "Playfair Display",serif;color:#263c32}.food-dish p{margin:0;font-size:13px;line-height:1.65;color:#6e756d}.food-dish small{grid-column:2;font-size:10px;color:#8b7659;letter-spacing:.04em}
+.food-stops{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.food-stop{padding:30px;background:#fff;border:1px solid #e4e1d7;box-shadow:0 10px 30px rgba(35,52,42,.04)}
+.food-stop-head{display:flex;align-items:center;justify-content:space-between}.food-stop-number{font:34px "Playfair Display",serif;color:#d6d8cb}
+.food-stop h3{font:32px/1.2 "Playfair Display",serif;font-weight:400;color:#263c32;margin:17px 0 5px}.food-stop h3 em{color:#87947b;font-style:italic}.food-area{font-size:12px;color:#8b7659;margin:0 0 18px}
+.food-place{display:flex;justify-content:space-between;gap:15px;padding:17px 0;border-top:1px solid #eceae2}.food-place b{font:19px "Playfair Display",serif;color:#263c32}.food-place p{font-size:13px;line-height:1.65;color:#6e756d;margin:5px 0}.food-place small{font-size:10px;letter-spacing:.04em;color:#9a876b}.food-place>a{white-space:nowrap;align-self:center;font-size:12px;color:#526b57;text-decoration:none;border-bottom:1px solid #aeb8a8;padding-bottom:3px}
+.food-tip{margin-top:14px;padding:13px 15px;background:#f0f0e9;color:#4c5e4d;font-size:12px;line-height:1.65}
+.food-disclaimer{font-size:11px;color:#81857d;line-height:1.7;margin-top:22px}
+@media(max-width:850px){.food-dishes{grid-template-columns:1fr 1fr}.food-stops{grid-template-columns:1fr}.food-intro{grid-template-columns:1fr;gap:10px}}
+@media(max-width:520px){.food-dishes{grid-template-columns:1fr}.food-stop{padding:22px 18px}.food-stop h3{font-size:27px}.food-place{gap:8px}.food-place>a{font-size:11px}.food-intro{padding:20px}.food-intro p{font-size:18px}}
