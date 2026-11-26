@@ -2,217 +2,684 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f5f2eb">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#16261e">
   <meta name="description" content="Carnet de voyage en Thaïlande — du 7 au 22 décembre 2026. Phuket, Khao Lak, Chiang Mai et Bangkok.">
   <title>The Hangover — Thaïlande 2026</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="The Hangover">
+  <meta property="og:title" content="The Hangover — Thaïlande 2026">
+  <meta property="og:description" content="Notre carnet de voyage du 7 au 22 décembre 2026 : Phuket, Khao Lak, Chiang Mai et Bangkok.">
+  <meta property="og:url" content="https://udrew9.github.io/thailande-2026/">
+  <meta property="og:image" content="https://udrew9.github.io/thailande-2026/couverture.jpg.png">
+  <meta property="og:image:width" content="679">
+  <meta property="og:image:height" content="322">
+  <meta property="og:image:alt" content="Les trois voyageurs au sommet d'une tour, au-dessus de Bangkok">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
-  <link rel="stylesheet" href="styles.css?v=20261115-7">
+  <link rel="stylesheet" href="styles.css?v=20261126-r1">
+  <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
-  <div class="topline"><span>THAÏLANDE</span><span>7 — 22 DÉCEMBRE 2026</span><span>3 VOYAGEURS</span></div>
-  <header class="site-header">
-    <a class="brand" href="#accueil" aria-label="Retour à l'accueil"><span class="brand-mark">T.</span><span>LE CARNET<br><small>DE VOYAGE</small></span></a>
-    <button class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
-    <nav class="nav">
-      <a href="#voyage">Le voyage</a><a href="#etapes">Les étapes</a><a href="#itineraire">Itinéraire</a><a href="#carte">La carte</a><a href="#bouffe">Bouffe du coin</a><a href="#pratique">À savoir</a>
+  <a class="skip" href="#voyage">Aller au contenu</a>
+  <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+
+  <!-- ===================== EN-TÊTE ===================== -->
+  <header class="hdr" id="hdr">
+    <a class="brand" href="#accueil" aria-label="The Hangover — retour en haut">
+      <span class="brand-mark" id="brand-mark">T.</span>
+      <span class="brand-txt">The Hangover<small>Thaïlande · Déc. 2026</small></span>
+    </a>
+    <nav class="hdr-nav" aria-label="Sections du carnet">
+      <a href="#etapes">Étapes</a><a href="#hebergements">Logements</a><a href="#itineraire">Programme</a><a href="#carte">Carte</a><a href="#budget">Budget</a><a href="#crew">Le crew</a><a href="#bouffe">Bouffe</a><a href="#pratique">À savoir</a>
     </nav>
-    <a class="nav-cta" href="#hebergements">Nos logements <span>↗</span></a>
+    <button class="menu-btn" id="menu-btn" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
   </header>
 
-  <main>
-    <section class="hero" id="accueil">
-      <div class="hero-image"></div>
-      <div class="hero-shade"></div>
-      <div class="hero-content">
-        <p class="eyebrow light">CARNET DE VOYAGE · ASIE DU SUD-EST</p>
-        <h1>The<br><em>Hangover.</em></h1>
-        <p class="hero-sub">Des îles du sud aux montagnes du nord, jusqu'à l'énergie de Bangkok.</p>
-        <a class="hero-link" href="#voyage">DÉCOUVRIR LE VOYAGE <span>↓</span></a>
-      </div>
-      <div class="hero-stamp"><span>16</span><small>JOURS<br>SUR PLACE</small></div>
-      <div class="hero-bottom"><span>PHUKET</span><span>—</span><span>KHAO LAK</span><span>—</span><span>CHIANG MAI</span><span>—</span><span>BANGKOK</span></div>
-    </section>
-
-    <section class="countdown-strip" aria-label="Compte à rebours avant le départ">
-      <div class="countdown-copy"><span class="eyebrow">PLUS QUE QUELQUES JOURS AVANT L'ARRIVÉE</span><strong>Arrivée en Thaïlande.</strong></div>
-      <div class="countdown-clock"><div><b id="count-days">—</b><span>JOURS</span></div><i>:</i><div><b id="count-hours">—</b><span>HEURES</span></div><i>:</i><div><b id="count-minutes">—</b><span>MINUTES</span></div></div>
-      <span class="countdown-date">07.12.2026 · PHUKET</span>
-    </section>
-
-    <section class="intro section" id="voyage">
-      <div class="section-kicker">01 / LE VOYAGE</div>
-      <div class="intro-grid">
-        <div><p class="eyebrow">UN VOYAGE, QUATRE AMBIANCES</p><h2>Du bleu profond<br>aux lumières de la ville.</h2></div>
-        <div class="intro-copy"><p>Trois voyageurs, seize jours en Thaïlande et quatre bases pour prendre le temps de découvrir le pays. Au programme : sorties en mer, plages, nature, temples, cuisine locale et nuits animées.</p><p class="muted">Départ de France le 6 décembre 2026 · arrivée à Phuket le 7 décembre · retour depuis Bangkok le 22 décembre.</p></div>
-      </div>
-      <div class="stats">
-        <div><strong>3</strong><span>VOYAGEURS</span></div><div><strong>4</strong><span>ÉTAPES</span></div><div><strong>15</strong><span>NUITS</span></div><div><strong>16</strong><span>JOURS SUR PLACE</span></div>
-      </div>
-    </section>
-
-    <section class="stops section" id="etapes">
-      <div class="section-heading"><div><div class="section-kicker">02 / LES ÉTAPES</div><h2>Quatre escales,<br><em>un seul voyage.</em></h2></div><p>Le parcours descend dans le sud pour les îles et la mer d'Andaman, remonte vers les montagnes du nord, puis se termine dans la capitale.</p></div>
-      <div class="stop-grid">
-        <article class="stop-card stop-phuket"><div class="stop-photo"></div><div class="stop-info"><span class="stop-number">01 / 07—11 DÉC.</span><h3>Phuket</h3><p>Plages, excursions en bateau et premières découvertes du sud thaïlandais.</p><div class="stop-meta"><b>4 nuits</b><span>PHUKET · SUD DE L'ÎLE</span></div><a href="#stay-phuket">Voir le logement ↗</a></div></article>
-        <article class="stop-card stop-khaolak"><div class="stop-photo"></div><div class="stop-info"><span class="stop-number">02 / 11—14 DÉC.</span><h3>Khao Lak</h3><p>Une parenthèse plus calme, avec les îles Similan en point d'orgue.</p><div class="stop-meta"><b>3 nuits</b><span>KHAO LAK · CÔTE ANDAMAN</span></div><a href="#stay-khaolak">Voir le logement ↗</a></div></article>
-        <article class="stop-card stop-chiangmai"><div class="stop-photo"></div><div class="stop-info"><span class="stop-number">03 / 14—19 DÉC.</span><h3>Chiang Mai</h3><p>Temples, cuisine du nord, montagnes et rencontre avec les éléphants.</p><div class="stop-meta"><b>5 nuits</b><span>CHIANG MAI · NORD DE LA THAÏLANDE</span></div><a href="#stay-chiangmai">Voir le logement ↗</a></div></article>
-        <article class="stop-card stop-bangkok"><div class="stop-photo"></div><div class="stop-info"><span class="stop-number">04 / 19—22 DÉC.</span><h3>Bangkok</h3><p>Marchés, temples, street food et dernières heures avant le retour.</p><div class="stop-meta"><b>3 nuits</b><span>BANGKOK · SUKHUMVIT 71</span></div><a href="#stay-bangkok">Voir le logement ↗</a></div></article>
-      </div>
-      <div class="destination-details">
-        <article id="fiche-phuket"><img src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=1200&q=85" alt="Paysage de Phuket"><div><span class="tag">7–11 DÉCEMBRE · 4 NUITS</span><h3>Phuket — la base du sud</h3><p><b>On dort :</b> Blue Palm Seafront Resort, à Rawai. Point de départ pour Phi Phi, Phang Nga et Krabi. Rawai est au sud de l'île : prévoir les transferts vers les embarcadères selon le tour choisi.</p><p><b>À faire :</b> 8 déc. Wat Chalong et Phuket Old Town, 9 déc. Koh Phi Phi & Maya Bay, 10 déc. baie de Phang Nga / James Bond Island. Le 11, transfert vers Khao Lak.</p><a href="#itineraire">Voir les journées ↓</a></div></article>
-        <article id="fiche-khaolak"><img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=85" alt="Mer tropicale à Khao Lak"><div><span class="tag">11–14 DÉCEMBRE · 3 NUITS</span><h3>Khao Lak — pause nature</h3><p><b>On dort :</b> Khaolak Relax Resort. La position est idéale pour partir tôt vers les Similan, puis garder une journée sans excursion.</p><p><b>À faire :</b> 12 déc. excursion Similan, 13 déc. repos et découverte locale, 14 déc. transfert vers l'aéroport de Phuket puis vol pour Chiang Mai.</p><a href="#itineraire">Voir les journées ↓</a></div></article>
-        <article id="fiche-chiangmai"><img src="https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=1200&q=85" alt="Temple du nord de la Thaïlande"><div><span class="tag">14–19 DÉCEMBRE · 5 NUITS</span><h3>Chiang Mai — temples et montagnes</h3><p><b>On dort :</b> At Leaf Villa, à Hang Dong, en périphérie sud-ouest. Les trajets vers la vieille ville nécessitent un véhicule, Grab ou taxi.</p><p><b>À faire :</b> 15 déc. temples de la vieille ville, 16 déc. cours de cuisine, 17 déc. Doi Inthanon, 18 déc. sanctuaire d'éléphants sans monte.</p><a href="#itineraire">Voir les journées ↓</a></div></article>
-        <article id="fiche-bangkok"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=85" alt="Bangkok au coucher du soleil"><div><span class="tag">19–22 DÉCEMBRE · 3 NUITS</span><h3>Bangkok — la grande finale</h3><p><b>On dort :</b> Somerset Sukhumvit 71. L'hôtel est à l'est du centre historique ; prévoir les trajets en BTS, MRT, bateau ou taxi selon les visites.</p><p><b>À faire :</b> Chinatown le 19 au soir, Chatuchak le dimanche 20, puis Grand Palace, Wat Pho et Wat Arun le 21.</p><a href="#itineraire">Voir les journées ↓</a></div></article>
-      </div>
-    </section>
-
-    <section class="lodgings section" id="hebergements">
-      <div class="section-heading"><div><div class="section-kicker">03 / LES HÉBERGEMENTS</div><h2>Nos points<br><em>de chute.</em></h2></div><p>Les hébergements communiqués, avec leurs dates de séjour et les liens Booking. Les photos d'ambiance ne sont pas des photos contractuelles des établissements.</p></div>
-      <div class="lodging-list">
-        <article class="lodging-card" id="stay-phuket"><div class="hotel-gallery"><a href="https://seafront.bluepalmhotels.com/en/gallery" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=900&q=80" alt="Blue Palm Seafront Resort – photo illustrative"><span>Voir la galerie de l'établissement ↗</span></a><div class="hotel-gallery-secondary"><img src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=650&q=80" alt="Paysage de la destination – photo illustrative"><span>Autour de votre séjour</span></div></div><div class="lodging-index">01</div><div class="lodging-main"><div class="lodging-top"><span class="tag">PHUKET · RAWAI</span><span class="date-label">7 → 11 DÉCEMBRE · 4 NUITS</span></div><h3>Blue Palm Seafront Resort Phuket</h3><p class="address">54/14 Moo 6, Rawai Beach, Phuket, Thaïlande</p><div class="lodging-details"><span><b>Arrivée</b> 14h–22h</span><span><b>Départ</b> avant 12h</span><span><b>Réservation</b> 3 adultes · 2 chambres</span></div><div class="lodging-actions"><a class="button button-dark" href="https://www.booking.com/hotel/th/blue-palm-seafront-resort-phuket.fr.html" target="_blank" rel="noopener">Voir sur Booking ↗</a><a class="text-link" href="https://www.google.com/maps/search/?api=1&query=Blue+Palm+Seafront+Resort+Phuket" target="_blank" rel="noopener">Ouvrir la carte ↗</a></div></div>
-        </article>
-        <article class="lodging-card" id="stay-khaolak"><div class="hotel-gallery"><a href="https://www.booking.com/hotel/th/khaolak-relax-resort.fr.html" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=900&q=80" alt="Khaolak Relax Resort – photo illustrative"><span>Voir la galerie de l'établissement ↗</span></a><div class="hotel-gallery-secondary"><img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=650&q=80" alt="Paysage de la destination – photo illustrative"><span>Autour de votre séjour</span></div></div><div class="lodging-index">02</div><div class="lodging-main"><div class="lodging-top"><span class="tag">KHAO LAK · PHANG NGA</span><span class="date-label">11 → 14 DÉCEMBRE · 3 NUITS</span></div><h3>Khaolak Relax Resort</h3><p class="address">30/47 Moo 3, Khuk Khak, Takua Pa, Phang Nga 82190, Thaïlande</p><div class="lodging-details"><span><b>Arrivée / départ</b> à confirmer</span><span><b>Réservation</b> 3 adultes · 2 chambres</span></div><div class="lodging-actions"><a class="button button-dark" href="https://www.booking.com/hotel/th/khaolak-relax-resort.fr.html" target="_blank" rel="noopener">Voir sur Booking ↗</a><a class="text-link" href="https://www.google.com/maps/search/?api=1&query=Khaolak+Relax+Resort" target="_blank" rel="noopener">Ouvrir la carte ↗</a></div></div>
-        </article>
-        <article class="lodging-card" id="stay-chiangmai"><div class="hotel-gallery"><a href="https://www.booking.com/hotel/th/at-leaf-villa.fr.html" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=900&q=80" alt="At Leaf Villa – photo illustrative"><span>Voir la galerie de l'établissement ↗</span></a><div class="hotel-gallery-secondary"><img src="https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=650&q=80" alt="Paysage de la destination – photo illustrative"><span>Autour de votre séjour</span></div></div><div class="lodging-index">03</div><div class="lodging-main"><div class="lodging-top"><span class="tag">CHIANG MAI · HANG DONG</span><span class="date-label">14 → 19 DÉCEMBRE · 5 NUITS</span></div><h3>At Leaf Villa</h3><p class="address">225/329 Kad Farang, Chiangmai-Hang Dong Road, Ban Waen, Hang Dong, Chiang Mai 50230, Thaïlande</p><div class="lodging-details"><span><b>Arrivée</b> 14h</span><span><b>Départ</b> 12h</span><span><b>Réservation</b> 3 adultes · 2 chambres</span></div><div class="lodging-actions"><a class="button button-dark" href="https://www.booking.com/hotel/th/at-leaf-villa.fr.html" target="_blank" rel="noopener">Voir sur Booking ↗</a><a class="text-link" href="https://www.google.com/maps/search/?api=1&query=At+Leaf+Villa+Chiang+Mai" target="_blank" rel="noopener">Ouvrir la carte ↗</a></div></div>
-        </article>
-        <article class="lodging-card" id="stay-bangkok"><div class="hotel-gallery"><a href="https://www.booking.com/hotel/th/somerset-sukhumvit-71-bangkok.fr.html" target="_blank" rel="noopener"><img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=900&q=80" alt="Somerset Sukhumvit 71 – photo illustrative"><span>Voir la galerie de l'établissement ↗</span></a><div class="hotel-gallery-secondary"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=650&q=80" alt="Paysage de la destination – photo illustrative"><span>Autour de votre séjour</span></div></div><div class="lodging-index">04</div><div class="lodging-main"><div class="lodging-top"><span class="tag">BANGKOK · SUKHUMVIT 71</span><span class="date-label">19 → 22 DÉCEMBRE · 3 NUITS</span></div><h3>Somerset Sukhumvit 71 Bangkok</h3><p class="address">1015/29 Pridi Banomyong 45, Sukhumvit 71 Road, Khlong Tan Nuea, Watthana, Bangkok 10110, Thaïlande</p><div class="lodging-details"><span><b>Arrivée</b> 14h</span><span><b>Départ</b> avant 12h</span><span><b>Réservation</b> 3 adultes · 2 chambres</span></div><div class="lodging-actions"><a class="button button-dark" href="https://www.booking.com/hotel/th/somerset-sukhumvit-71-bangkok.fr.html" target="_blank" rel="noopener">Voir sur Booking ↗</a><a class="text-link" href="https://www.google.com/maps/search/?api=1&query=Somerset+Sukhumvit+71+Bangkok" target="_blank" rel="noopener">Ouvrir la carte ↗</a></div></div>
-        </article>
-      </div>
-      <p class="small-note">Les tarifs, conditions d'annulation, catégories de chambres et numéros de réservation ne sont pas renseignés ici : vérifiez-les directement dans vos confirmations Booking.</p>
-    </section>
-
-
-    <section class="route section" id="itineraire"><div class="section-heading"><div><div class="section-kicker">04 / JOUR APRÈS JOUR</div><h2>Le fil du<br><em>voyage.</em></h2></div><p>Chaque journée se déplie pour afficher les étapes dans l'ordre, les horaires indicatifs et une estimation du budget par personne.</p></div><div class="route-controls" role="group" aria-label="Filtrer les étapes"><button class="filter active" data-filter="all">Tout le voyage</button><button class="filter" data-filter="phuket">Phuket</button><button class="filter" data-filter="khaolak">Khao Lak</button><button class="filter" data-filter="chiangmai">Chiang Mai</button><button class="filter" data-filter="bangkok">Bangkok</button></div><div class="timeline"><article class="day" data-place="phuket"><div class="day-date"><span>LUN.</span><b>07</b><small>DÉC.</small></div><div class="day-visual"><img loading="lazy" src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=800&q=82" alt="Arrivée à Phuket"><span>Arrivée à Phuket</span></div><div class="day-body"><div class="day-heading"><span class="day-place">PHUKET · ARRIVÉE</span><span class="day-kind">INSTALLATION</span></div><h3>Bienvenue en Thaïlande</h3><p>Arrivée, transfert vers Rawai et installation au Blue Palm. Journée légère après le vol.</p><details class="day-details"><summary><span>Voir le programme détaillé</span><span class="details-arrow">⌄</span></summary><div class="day-detail-content"><ol><li><time>Selon arrivée</time><div><b>Aéroport → Rawai</b><p>Environ 1 h à 1 h 15.</p></div></li><li><time>Fin d'après-midi</time><div><b>Rawai Beach</b><p>Première balade ou piscine.</p></div></li><li><time>Soir</time><div><b>Dîner à Rawai</b><p>Repas dans le quartier.</p></div></li></ol><p class="day-cost">Budget estimé : 300–700 THB (8–18 €), hors transfert aéroport.</p><p class="day-caveat">Horaires indicatifs, à adapter aux réservations, à la météo et aux trajets réels.</p></div></details></div></article>
-<article class="day" data-place="phuket"><div class="day-date"><span>MAR.</span><b>08</b><small>DÉC.</small></div><div class="day-visual"><img loading="lazy" src="https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=800&q=82" alt="Temples & vieille ville"><span>Temples & vieille ville</span></div><div class="day-body"><div class="day-heading"><span class="day-place">PHUKET · PHUKET TOWN</span><span class="day-kind">CULTURE</span></div><h3>Wat Chalong & Phuket Old Town</h3><p>Temples le matin, puis ruelles colorées et cafés de la vieille ville. Pas d'excursion en bateau.</p><details class="day-details"><summary><span>Voir le programme détaillé</span><span class="details-arrow">⌄</span></summary><div class="day-detail-content"><ol><li><time>08h30</time><div><b>Départ de Rawai</b><p>40–60 min de route.</p></div></li><li><time>09h30</time><div><b>Wat Chalong</b><p>Visite du temple, épaules et genoux couverts.</p></div></li><li><time>11h00</time><div><b>Déjeuner</b><p>Pause dans le secteur de Chalong.</p></div></li><li><time>13h00</time><div><b>Phuket Old Town</b><p>Thalang Road, Soi Romanee et façades sino-portugaises.</p></div></li><li><time>16h00</time><div><b>Retour à Rawai</b><p>Soirée libre.</p></div></li></ol><p class="day-cost">Budget estimé : 0–200 THB (0–5 €) d'entrées, hors repas et transport.</p><p class="day-caveat">Horaires indicatifs, à adapter aux réservations, à la météo et aux trajets réels.</p></div></details></div></article>
-<article class="day" data-place="phuket"><div class="day-date"><span>MER.</span><b>09</b><small>DÉC.</small></div><div class="day-visual"><img loading="lazy" src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=800&q=82" alt="Maya Bay & Phi Phi"><span>Maya Bay & Phi Phi</span></div><div class="day-body"><div class="day-heading"><span class="day-place">PHUKET · KOH PHI PHI</span><span class="day-kind">EXCURSION EN MER</span></div><h3>Maya Bay & les îles Phi Phi</h3><p>Speedboat, Maya Bay, lagons et snorkeling selon la mer. Baignade interdite à Maya Bay.</p><details class="day-details"><summary><span>Voir le programme détaillé</span><span class="details-arrow">⌄</span></summary><div class="day-detail-content"><ol><li><time>06h30–07h30</time><div><b>Pickup à l'hôtel</b><p>Horaire confirmé par l'opérateur.</p></div></li><li><time>08h00</time><div><b>Embarquement</b><p>Départ en speedboat.</p></div></li><li><time>09h00</time><div><b>Maya Bay</b><p>Visite réglementée, pas de baignade.</p></div></li><li><time>10h30</time><div><b>Pileh Lagoon</b><p>Arrêt photo / baignade si autorisée.</p></div></li><li><time>12h00</time><div><b>Phi Phi Don</b><p>Déjeuner et temps libre.</p></div></li><li><time>14h00</time><div><b>Snorkeling</b><p>Arrêt sur un récif.</p></div></li><li><time>16h00–17h00</time><div><b>Retour à Rawai</b><p>Transfert à l'hôtel.</p></div></li></ol><p class="day-cost">Budget estimé : 2 000–2 500 THB (51–64 €) / personne. Vérifier si les 400 THB de parc sont inclus.</p><p class="day-caveat">Horaires indicatifs, à adapter aux réservations, à la météo et aux trajets réels.</p></div></details></div></article>
-<article class="day" data-place="phuket"><div class="day-date"><span>JEU.</span><b>10</b><small>DÉC.</small></div><div class="day-visual"><img loading="lazy" src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=800&q=82" alt="Baie de Phang Nga"><span>Baie de Phang Nga</span></div><div class="day-body"><div class="day-heading"><span class="day-place">PHUKET · PHANG NGA</span><span class="day-kind">EXCURSION EN MER</span></div><h3>James Bond Island & mangroves</h3><p>Baie karstique, canoë dans les grottes / hongs selon le circuit, puis James Bond Island.</p><details class="day-details"><summary><span>Voir le programme détaillé</span><span class="details-arrow">⌄</span></summary><div class="day-detail-content"><ol><li><time>07h00–08h00</time><div><b>Pickup à Rawai</b><p>Horaire selon prestataire.</p></div></li><li><time>09h00</time><div><b>Embarquement</b><p>Départ vers la baie.</p></div></li><li><time>10h30</time><div><b>Canoë / kayak</b><p>Grottes et lagons accompagnés.</p></div></li><li><time>12h00</time><div><b>Déjeuner</b><p>Souvent inclus.</p></div></li><li><time>13h30</time><div><b>James Bond Island</b><p>Khao Phing Kan et Ko Tapu.</p></div></li><li><time>15h00</time><div><b>Retour</b><p>Arrêts selon météo.</p></div></li><li><time>17h00–18h00</time><div><b>Rawai</b><p>Retour à l'hôtel.</p></div></li></ol><p class="day-cost">Budget estimé : 1 600–2 600 THB (41–67 €) / personne. Vérifier frais de parc et inclusions.</p><p class="day-caveat">Horaires indicatifs, à adapter aux réservations, à la météo et aux trajets réels.</p></div></details></div></article>
-<article class="day" data-place="khaolak"><div class="day-date"><span>VEN.</span><b>11</b><small>DÉC.</small></div><div class="day-visual"><img loading="lazy" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=82" alt="Route vers Khao Lak"><span>Route vers Khao Lak</span></div><div class="day-body"><div class="day-heading"><span class="day-place">PHUKET → KHAO LAK</span><span class="day-kind">TRANSFERT</span></div><h3>De Rawai à Khao Lak</h3><p>Route vers Khuk Khak et installation au Khaolak Relax Resort. Pas de grosse activité prévue.</p><details class="day-details"><summary><span>Voir le programme détaillé</span><span class="details-arrow">⌄</span></summary><div class="day-detail-content"><ol><li><time>09h00</time><div><b>Check-out</b><p>Départ après le petit-déjeuner.</p></div></li><li><time>09h00–12h00</time><div><b>Route vers Khao Lak</b><p>Environ 2 h 30 à 3 h.</p></div></li><li><time>12h00</time><div><b>Déjeuner</b><p>Pause et dépôt des bagages.</p></div></li><li><time>15h00</time><div><b>Installation</b><p>Plage ou piscine.</p></div></li><li><time>Soir</time><div><b>Dîner</b><p>Soirée tranquille.</p></div></li></ol><p class="day-cost">Budget estimé : Transfert privé à partager + repas.</p><p class="day-caveat">Horaires indicatifs, à adapter aux réservations, à la météo et aux trajets réels.</p></div></details></div></article>
-<article class="day" data-place="khaolak"><div class="day-date"><span>SAM.</span><b>12</b><small>DÉC.</small></div><div class="day-visual"><img loading="lazy" src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=82" alt="Îles Similan"><span>Îles Similan</span></div><div class="day-body"><div class="day-heading"><span class="day-place">KHAO LAK · SIMILAN</span><span class="day-kind">EXCURSION EN MER</span></div><h3>Les îles Similan</h3><p>Journée complète : plages, Sail Rock et snorkeling. Saison officielle annoncée du 15 oct. 2026 au 15 mai 2027 ; sortie soumise à la météo.</p><details class="day-details"><summary><span>Voir le programme détaillé</span><span class="details-arrow">⌄</span></summary><div class="day-detail-content"><ol><li><time>06h00–07h00</time><div><b>Pickup hôtel</b><p>Transfert vers Thap Lamu.</p></div></li><li><time>07h30</time><div><b>Speedboat</b><p>Traversée 60–80 min environ.</p></div></li><li><time>09h00</time><div><b>Island 4 / Koh Miang</b><p>Plage selon itinéraire.</p></div></li><li><time>11h00</time><div><b>Snorkeling</b><p>Récif et poissons.</p></div></li><li><time>12h30</time><div><b>Déjeuner</b><p>Souvent inclus.</p></div></li><li><time>14h00</time><div><b>Island 8 / Koh Similan</b><p>Donald Duck Bay et Sail Rock si conditions adaptées.</p></div></li><li><time>15h00–17h00</time><div><b>Retour</b><p>Bateau puis transfert hôtel.</p></div></li></ol><p class="day-cost">Budget estimé : 2 600–4 100 THB (67–105 €) / personne. Vérifier frais de parc inclus.</p><p class="day-caveat">Horaires indicatifs, à adapter aux réservations, à la météo et aux trajets réels.</p></div></details></div></article>
-<article class="day" data-place="khaolak"><div class="day-date"><span>DIM.</span><b>13</b><small>DÉC.</small></div><div class="day-visual"><img loading="lazy" src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=800&q=82" alt="Plage & détente"><span>Plage & détente</span></div><div class="day-body"><div class="day-heading"><span class="day-place">KHAO LAK</span><span class="day-kind">TEMPS LIBRE</span></div><h3>Plage & découverte locale</h3><p>Journée repos après les Similan. Khuk Khak / Bang Niang selon envie et transports.</p><details class="day-details"><summary><span>Voir le programme détaillé</span><span class="details-arrow">⌄</span></summary><div class="day-detail-content"><ol><li><time>Matin</time><div><b>Petit-déjeuner tranquille</b><p>Piscine ou plage.</p></div></li><li><time>11h00</time><div><b>Plage de Khuk Khak</b><p>Baignade si mer calme.</p></div></li><li><time>Après-midi</time><div><b>Bang Niang</b><p>Marché / commerces selon ouverture, taxi ou Grab.</p></div></li><li><time>Fin de journée</time><div><b>Mémorial du tsunami (option)</b><p>Lieu de mémoire.</p></div></li><li><time>Soir</time><div><b>Dîner local</b><p>Dernière soirée dans le sud.</p></div></li></ol><p class="day-cost">Budget estimé : Quasi gratuit, prévoir transports et repas.</p><p class="day-caveat">Horaires indicatifs, à adapter aux réservations, à la météo et aux trajets réels.</p></div></details></div></article>
-<article class="day" data-place="chiangmai"><div class="day-date"><span>LUN.</span><b>14</b><small>DÉC.</small></div><div class="day-visual"><img loading="lazy" src="https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=800&q=82" alt="Du sud au nord"><span>Du sud au nord</span></div><div class="day-body"><div class="day-heading"><span class="day-place">KHAO LAK → CHIANG MAI</span><span class="day-kind">TRANSFERT & VOL</span></div><h3>Du sud au nord</h3><p>Route vers Phuket Airport puis vol pour Chiang Mai. Horaire du vol à vérifier sur le billet.</p><details class="day-details"><summary><span>Voir le programme détaillé</span><span class="details-arrow">⌄</span></summary><div class="day-detail-content"><ol><li><time>Matin</time><div><b>Check-out et transfert</b><p>Khao Lak → aéroport : 1 h 15 à 1 h 30.</p></div></li><li><time>Journée</time><div><b>Vol Phuket → Chiang Mai</b><p>Selon horaire réservé.</p></div></li><li><time>Après arrivée</time><div><b>Transfert à Hang Dong</b><p>At Leaf Villa, environ 20–30 min en voiture.</p></div></li><li><time>Soir</time><div><b>Installation & dîner</b><p>Repos près de Kad Farang.</p></div></li></ol><p class="day-cost">Budget estimé : Transferts et vol intérieur non inclus.</p><p class="day-caveat">Horaires indicatifs, à adapter aux réservations, à la météo et aux trajets réels.</p></div></details></div></article>
-<article class="day" data-place="chiangmai"><div class="day-date"><span>MAR.</span><b>15</b><small>DÉC.</small></div><div class="day-visual"><img loading="lazy" src="https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=800&q=82" alt="Temples de Chiang Mai"><span>Temples de Chiang Mai</span></div><div class="day-body"><div class="day-heading"><span class="day-place">CHIANG MAI · VIEILLE VILLE</span><span class="day-kind">TEMPLES</span></div><h3>Les temples de la vieille ville</h3><p>Boucle à pied dans le centre historique : trois temples proches. Depuis Hang Dong, rejoignez le centre en Grab / taxi.</p><details class="day-details"><summary><span>Voir le programme détaillé</span><span class="details-arrow">⌄</span></summary><div class="day-detail-content"><ol><li><time>08h30</time><div><b>Départ Hang Dong</b><p>20–30 min de route.</p></div></li><li><time>09h00</time><div><b>Wat Chedi Luang</b><p>Entrée étrangère autour de 50 THB.</p></div></li><li><time>10h30</time><div><b>Wat Phra Singh</b><p>Temple majeur, certains espaces payants.</p></div></li><li><time>12h00</time><div><b>Déjeuner</b><p>Cuisine locale.</p></div></li><li><time>13h30</time><div><b>Wat Chiang Man</b><p>Visite courte.</p></div></li><li><time>15h00</time><div><b>Tha Phae Gate & Three Kings</b><p>Balade dans le centre.</p></div></li><li><time>16h30</time><div><b>Retour Hang Dong</b><p>Fin de journée libre.</p></div></li></ol><p class="day-cost">Budget estimé : 50–100 THB (1–3 €) d'entrées, hors transport et repas.</p><p class="day-caveat">Horaires indicatifs, à adapter aux réservations, à la météo et aux trajets réels.</p></div></details></div></article>
-<article class="day" data-place="chiangmai"><div class="day-date"><span>MER.</span><b>16</b><small>DÉC.</small></div><div class="day-visual"><img loading="lazy" src="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=800&q=82" alt="Cuisine thaïlandaise"><span>Cuisine thaïlandaise</span></div><div class="day-body"><div class="day-heading"><span class="day-place">CHIANG MAI · COOKING CLASS</span><span class="day-kind">CUISINE</span></div><h3>Apprendre à cuisiner thaï</h3><p>Cours en petit groupe : marché, préparation de plusieurs plats et dégustation. Vérifier le pickup à Hang Dong.</p><details class="day-details"><summary><span>Voir le programme détaillé</span><span class="details-arrow">⌄</span></summary><div class="day-detail-content"><ol><li><time>08h00–09h00</time><div><b>Pickup / rendez-vous</b><p>Selon l'école.</p></div></li><li><time>09h00</time><div><b>Marché local</b><p>Herbes, sauces et ingrédients.</p></div></li><li><time>10h00</time><div><b>Cours de cuisine</b><p>Préparation de plusieurs plats.</p></div></li><li><time>12h30</time><div><b>Déjeuner</b><p>Dégustation de vos plats.</p></div></li><li><time>14h00–15h00</time><div><b>Retour hébergement</b><p>Après-midi libre.</p></div></li></ol><p class="day-cost">Budget estimé : 1 000–1 650 THB (26–42 €) / personne, transport parfois inclus.</p><p class="day-caveat">Horaires indicatifs, à adapter aux réservations, à la météo et aux trajets réels.</p></div></details></div></article>
-<article class="day" data-place="chiangmai"><div class="day-date"><span>JEU.</span><b>17</b><small>DÉC.</small></div><div class="day-visual"><img loading="lazy" src="https://images.unsplash.com/photo-1519682355782-8e7f8b2f3a9d?auto=format&fit=crop&w=800&q=82" alt="Montagnes de Doi Inthanon"><span>Montagnes de Doi Inthanon</span></div><div class="day-body"><div class="day-heading"><span class="day-place">CHIANG MAI · DOI INTHANON</span><span class="day-kind">NATURE</span></div><h3>Le toit de la Thaïlande</h3><p>Journée au parc national : sommet, pagodes royales, cascades et paysages de montagne. Longue journée de route.</p><details class="day-details"><summary><span>Voir le programme détaillé</span><span class="details-arrow">⌄</span></summary><div class="day-detail-content"><ol><li><time>07h00</time><div><b>Départ Hang Dong</b><p>1 h 30 à 2 h de route.</p></div></li><li><time>09h00</time><div><b>Sommet de Doi Inthanon</b><p>Point culminant et sentier court.</p></div></li><li><time>10h30</time><div><b>Twin Royal Pagodas</b><p>Pagodes et jardins.</p></div></li><li><time>12h00</time><div><b>Déjeuner</b><p>Pause dans le parc.</p></div></li><li><time>13h00</time><div><b>Wachirathan Waterfall</b><p>Cascade et points de vue.</p></div></li><li><time>14h30</time><div><b>Autre arrêt nature</b><p>Selon tour et timing.</p></div></li><li><time>17h00–18h30</time><div><b>Retour</b><p>Soirée repos.</p></div></li></ol><p class="day-cost">Budget estimé : Environ 400 THB (10 €) d'entrées principales + transport.</p><p class="day-caveat">Horaires indicatifs, à adapter aux réservations, à la météo et aux trajets réels.</p></div></details></div></article>
-<article class="day" data-place="chiangmai"><div class="day-date"><span>VEN.</span><b>18</b><small>DÉC.</small></div><div class="day-visual"><img loading="lazy" src="https://images.unsplash.com/photo-1564760055775-d63b17a55c44?auto=format&fit=crop&w=800&q=82" alt="Sanctuaire des éléphants"><span>Sanctuaire des éléphants</span></div><div class="day-body"><div class="day-heading"><span class="day-place">CHIANG MAI · SANCTUAIRE</span><span class="day-kind">ÉLÉPHANTS</span></div><h3>Observer les éléphants</h3><p>Sanctuaire privilégiant l'observation, sans monte, spectacle ni baignade forcée. Vérifier les pratiques et le transport.</p><details class="day-details"><summary><span>Voir le programme détaillé</span><span class="details-arrow">⌄</span></summary><div class="day-detail-content"><ol><li><time>07h00–08h00</time><div><b>Pickup</b><p>Horaire selon sanctuaire.</p></div></li><li><time>Matinée</time><div><b>Découverte du sanctuaire</b><p>Observer sans interaction imposée.</p></div></li><li><time>12h00</time><div><b>Déjeuner</b><p>Souvent inclus en formule journée.</p></div></li><li><time>Après-midi</time><div><b>Suite de la visite</b><p>Respect du rythme des animaux.</p></div></li><li><time>15h00–16h30</time><div><b>Retour Hang Dong</b><p>Fin de journée libre.</p></div></li></ol><p class="day-cost">Budget estimé : 1 800–2 800 THB (46–72 €) / personne selon formule.</p><p class="day-caveat">Horaires indicatifs, à adapter aux réservations, à la météo et aux trajets réels.</p></div></details></div></article>
-<article class="day" data-place="bangkok"><div class="day-date"><span>SAM.</span><b>19</b><small>DÉC.</small></div><div class="day-visual"><img loading="lazy" src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=82" alt="Première soirée à Bangkok"><span>Première soirée à Bangkok</span></div><div class="day-body"><div class="day-heading"><span class="day-place">CHIANG MAI → BANGKOK</span><span class="day-kind">VOL & STREET FOOD</span></div><h3>Première soirée à Bangkok</h3><p>Vol vers Bangkok, installation au Somerset Sukhumvit 71 puis Chinatown si l'heure le permet.</p><details class="day-details"><summary><span>Voir le programme détaillé</span><span class="details-arrow">⌄</span></summary><div class="day-detail-content"><ol><li><time>Matin / midi</time><div><b>Vol Chiang Mai → Bangkok</b><p>Selon billet.</p></div></li><li><time>Après-midi</time><div><b>Transfert & check-in</b><p>Prévoir taxi / navette vers BTS.</p></div></li><li><time>18h00</time><div><b>Départ Chinatown</b><p>Taxi ou transports selon trafic.</p></div></li><li><time>19h00</time><div><b>Yaowarat Road</b><p>Street food et balade.</p></div></li><li><time>21h00</time><div><b>Retour hôtel</b><p>Trajet selon circulation.</p></div></li></ol><p class="day-cost">Budget estimé : Repas et transports ; vol non inclus.</p><p class="day-caveat">Horaires indicatifs, à adapter aux réservations, à la météo et aux trajets réels.</p></div></details></div></article>
-<article class="day" data-place="bangkok"><div class="day-date"><span>DIM.</span><b>20</b><small>DÉC.</small></div><div class="day-visual"><img loading="lazy" src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=82" alt="Marché de Chatuchak"><span>Marché de Chatuchak</span></div><div class="day-body"><div class="day-heading"><span class="day-place">BANGKOK · CHATUCHAK</span><span class="day-kind">MARCHÉ</span></div><h3>Chatuchak, le marché du dimanche</h3><p>Marché du week-end animé le dimanche. Entrée gratuite ; achats facultatifs.</p><details class="day-details"><summary><span>Voir le programme détaillé</span><span class="details-arrow">⌄</span></summary><div class="day-detail-content"><ol><li><time>08h30</time><div><b>Départ hôtel</b><p>Taxi / BTS-MRT selon trajet.</p></div></li><li><time>09h30</time><div><b>Chatuchak Weekend Market</b><p>Artisanat, vêtements et souvenirs.</p></div></li><li><time>12h30</time><div><b>Déjeuner</b><p>Street food sur place.</p></div></li><li><time>14h00</time><div><b>Chatuchak Park</b><p>Pause dans le parc, gratuit.</p></div></li><li><time>16h00</time><div><b>Retour hôtel</b><p>Repos.</p></div></li><li><time>Soir</time><div><b>Dîner libre</b><p>Selon envie.</p></div></li></ol><p class="day-cost">Budget estimé : Entrée gratuite ; repas, transports et achats en supplément.</p><p class="day-caveat">Horaires indicatifs, à adapter aux réservations, à la météo et aux trajets réels.</p></div></details></div></article>
-<article class="day" data-place="bangkok"><div class="day-date"><span>LUN.</span><b>21</b><small>DÉC.</small></div><div class="day-visual"><img loading="lazy" src="https://images.unsplash.com/photo-1563492065599-3520f775eeed?auto=format&fit=crop&w=800&q=82" alt="Grand Palace & temples"><span>Grand Palace & temples</span></div><div class="day-body"><div class="day-heading"><span class="day-place">BANGKOK · RATTANAKOSIN</span><span class="day-kind">GRANDS TEMPLES</span></div><h3>Grand Palace, Wat Pho & Wat Arun</h3><p>Les trois sites se combinent à pied et en bateau. Commencer tôt ; tenue couvrant épaules et jambes.</p><details class="day-details"><summary><span>Voir le programme détaillé</span><span class="details-arrow">⌄</span></summary><div class="day-detail-content"><ol><li><time>08h30</time><div><b>Ouverture Grand Palace</b><p>Arriver dès l'ouverture.</p></div></li><li><time>08h30–10h45</time><div><b>Grand Palace & Wat Phra Kaew</b><p>Prévoir environ 2 h.</p></div></li><li><time>11h00</time><div><b>Wat Pho</b><p>Bouddha couché et enceinte.</p></div></li><li><time>12h30</time><div><b>Déjeuner</b><p>Près du fleuve.</p></div></li><li><time>13h45</time><div><b>Ferry sur le Chao Phraya</b><p>Traversée vers Wat Arun.</p></div></li><li><time>14h00</time><div><b>Wat Arun</b><p>Temple de l'Aube et mosaïques.</p></div></li><li><time>15h30</time><div><b>Balade au fleuve</b><p>Fin de visite.</p></div></li></ol><p class="day-cost">Budget estimé : Entrées : 500 + 300 + 200 = 1 000 THB (environ 26 €) / personne, hors repas et transports.</p><p class="day-caveat">Horaires indicatifs, à adapter aux réservations, à la météo et aux trajets réels.</p></div></details></div></article>
-<article class="day" data-place="bangkok"><div class="day-date"><span>MAR.</span><b>22</b><small>DÉC.</small></div><div class="day-visual"><img loading="lazy" src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=82" alt="Derniers instants"><span>Derniers instants</span></div><div class="day-body"><div class="day-heading"><span class="day-place">BANGKOK → FRANCE</span><span class="day-kind">RETOUR</span></div><h3>Derniers instants en Thaïlande</h3><p>Check-out et transfert vers l'aéroport. Gardez environ 3 h avant le vol international, plus marge trafic.</p><details class="day-details"><summary><span>Voir le programme détaillé</span><span class="details-arrow">⌄</span></summary><div class="day-detail-content"><ol><li><time>Selon vol</time><div><b>Petit-déjeuner & check-out</b><p>Vérifier l'heure limite de l'hôtel.</p></div></li><li><time>Environ 4 h avant vol</time><div><b>Départ aéroport</b><p>Adapter à l'aéroport et au trafic.</p></div></li><li><time>3 h avant vol</time><div><b>Enregistrement</b><p>Retour vers la France.</p></div></li></ol><p class="day-cost">Budget estimé : Transfert aéroport et dépenses personnelles.</p><p class="day-caveat">Horaires indicatifs, à adapter aux réservations, à la météo et aux trajets réels.</p></div></details></div></article></div></section>
-
-    <section class="budget section" id="budget"><div class="section-heading"><div><div class="section-kicker">05 / BUDGET DES SORTIES</div><h2>Combien prévoir<br><em>pour en profiter ?</em></h2></div><p>Estimations indicatives par personne, en groupe partagé. Les montants varient selon le bateau, les transferts, les frais de parc et les options. Conversion de travail : 1 € ≈ 38 ฿.</p></div>
-<div class="budget-grid">
-<article><span class="tag">PHUKET · 8 DÉC.</span><h3>Krabi / 4 Islands ou Hong Islands</h3><strong>2 200–3 200 ฿</strong><small>≈ 58–84 € / personne</small><p>Sortie à la journée. Depuis Phuket, c'est long : vérifier que le transfert jusqu'au départ est compris.</p></article>
-<article><span class="tag">PHUKET · 9 DÉC.</span><h3>Koh Phi Phi & Maya Bay</h3><strong>2 000–3 100 ฿</strong><small>≈ 53–82 € / personne</small><p>Speedboat ou catamaran. Vérifier si les 400 ฿ de frais du parc national sont inclus.</p></article>
-<article><span class="tag">PHUKET · 10 DÉC.</span><h3>James Bond Island / Phang Nga</h3><strong>1 700–2 800 ฿</strong><small>≈ 45–74 € / personne</small><p>Gros bateau ou speedboat, parfois canoë et déjeuner inclus. Frais de parc à confirmer.</p></article>
-<article><span class="tag">KHAO LAK · 12 DÉC.</span><h3>Îles Similan</h3><strong>2 300–3 600 ฿</strong><small>≈ 61–95 € / personne</small><p>Journée complète, transfert souvent inclus. Vérifier les 500 ฿ de frais de parc si non inclus.</p></article>
-<article><span class="tag">CHIANG MAI · 15 DÉC.</span><h3>Cours de cuisine thaï</h3><strong>750–1 800 ฿</strong><small>≈ 20–47 € / personne</small><p>Souvent marché, ingrédients, plusieurs plats et parfois transport.</p></article>
-<article><span class="tag">CHIANG MAI · 16 DÉC.</span><h3>Doi Inthanon</h3><strong>1 500–2 300 ฿</strong><small>≈ 40–61 € / personne</small><p>Excursion groupée journée complète. Vérifier entrée du parc, déjeuner et transferts.</p></article>
-<article><span class="tag">CHIANG MAI · 17 DÉC.</span><h3>Sanctuaire d'éléphants sans monte</h3><strong>1 700–2 500 ฿</strong><small>≈ 45–66 € / personne</small><p>Demi-journée ou journée. Privilégier observation et soins sans monte, spectacles ni baignade forcée.</p></article>
-<article><span class="tag">CHIANG MAI · 18 DÉC.</span><h3>Doi Suthep & Nimman</h3><strong>50–100 ฿</strong><small>≈ 1–3 € / personne</small><p>Entrée du temple et petit transport local ; prévoir davantage si vous prenez un taxi privé.</p></article>
-<article><span class="tag">BANGKOK · 20 DÉC.</span><h3>Chatuchak & Jim Thompson House</h3><strong>250 ฿ + transport</strong><small>≈ 7 € / personne + trajets</small><p>Marché gratuit. Jim Thompson House : environ 250 ฿ d'entrée.</p></article>
-<article><span class="tag">BANGKOK · 21 DÉC.</span><h3>Grand Palace + Wat Pho + Wat Arun</h3><strong>1 000 ฿</strong><small>≈ 26 € / personne</small><p>500 + 300 + 200 ฿ d'entrées, hors bateau, transports et éventuelle croisière.</p></article>
-</div>
-<div class="budget-total"><div><span>ESTIMATION POUR LES 3 VOYAGEURS · ACTIVITÉS LISTÉES</span><strong>≈ 610–850 €</strong><small>Hors repas, shopping, vols intérieurs, transferts privés et extras. La croisière à Bangkok n'est pas incluse.</small></div></div>
-<div class="trip-calculator" id="calculateur">
-  <div class="calculator-heading"><span class="eyebrow">À VOUS DE JOUER</span><h3>Composez votre budget<br><em>d'excursions.</em></h3><p>Cochez les activités qui vous tentent et ajustez le nombre de voyageurs. Le total se recalcule automatiquement.</p></div>
-  <div class="calculator-panel">
-    <div class="travellers-control"><label for="travellers-range">Nombre de voyageurs</label><output id="travellers-count">3 personnes</output><input id="travellers-range" type="range" min="1" max="6" value="3" step="1"></div>
-    <div class="calculator-options">
-      <label><input type="checkbox" checked data-min="2200" data-max="3200"><span>Krabi / 4 Islands ou Hong Islands</span></label>
-      <label><input type="checkbox" checked data-min="2000" data-max="3100"><span>Koh Phi Phi & Maya Bay</span></label>
-      <label><input type="checkbox" checked data-min="1700" data-max="2800"><span>James Bond Island / Phang Nga</span></label>
-      <label><input type="checkbox" checked data-min="2300" data-max="3600"><span>Îles Similan</span></label>
-      <label><input type="checkbox" checked data-min="750" data-max="1800"><span>Cours de cuisine thaï</span></label>
-      <label><input type="checkbox" checked data-min="1500" data-max="2300"><span>Doi Inthanon</span></label>
-      <label><input type="checkbox" checked data-min="1700" data-max="2500"><span>Sanctuaire d'éléphants</span></label>
-      <label><input type="checkbox" checked data-min="50" data-max="100"><span>Doi Suthep & Nimman</span></label>
-      <label><input type="checkbox" checked data-min="250" data-max="250"><span>Jim Thompson House</span></label>
-      <label><input type="checkbox" checked data-min="1000" data-max="1000"><span>Grand Palace, Wat Pho & Wat Arun</span></label>
-    </div>
-    <div class="calculator-result"><span>ESTIMATION POUR LE GROUPE</span><strong id="calc-euros">—</strong><small id="calc-baht">—</small><small>Fourchette indicative, hors repas, transports et extras. Conversion : 1 € ≈ 38 ฿.</small></div>
+  <div class="menu" id="menu" aria-hidden="true">
+    <nav class="menu-links" aria-label="Menu">
+      <a href="#voyage"><i>01</i>Le voyage</a>
+      <a href="#etapes"><i>02</i>Les étapes</a>
+      <a href="#hebergements"><i>03</i>Logements</a>
+      <a href="#itineraire"><i>04</i>Jour par jour</a>
+      <a href="#carte"><i>05</i>La carte</a>
+      <a href="#budget"><i>06</i>Budget</a>
+      <a href="#crew"><i>07</i>Le coin du crew</a>
+      <a href="#bouffe"><i>08</i>Bouffe du coin</a>
+      <a href="#pratique"><i>09</i>À savoir</a>
+    </nav>
+    <p class="menu-foot">7 — 22 décembre 2026 · Phuket · Khao Lak · Chiang Mai · Bangkok</p>
   </div>
-</div>
-</section>
-<section class="map-section section" id="carte">
-      <div class="section-heading"><div><div class="section-kicker">05 / LE PARCOURS</div><h2>La Thaïlande<br><em>sur la carte.</em></h2></div><p>Les quatre bases du séjour, du sud vers le nord puis retour dans la capitale. Les liaisons aériennes intérieures sont prévues mais ne sont pas encore confirmées.</p></div>
-      <div class="map-wrap"><div id="travel-map" aria-label="Carte des quatre étapes du voyage"></div><div class="map-legend"><div><i class="dot sea"></i><span>Sud · mer d'Andaman</span></div><div><i class="dot north"></i><span>Nord · Chiang Mai</span></div><div><i class="dot city"></i><span>Centre · Bangkok</span></div></div></div>
-      <div class="route-summary"><div><span>01</span><b>Phuket → Khao Lak</b><small>Route · env. 1h30 à 2h</small></div><div><span>02</span><b>Phuket → Chiang Mai</b><small>Vol intérieur · à réserver</small></div><div><span>03</span><b>Chiang Mai → Bangkok</b><small>Vol intérieur · à réserver</small></div></div>
+
+  <main>
+    <!-- ===================== COUVERTURE ===================== -->
+    <section class="hero" id="accueil">
+      <div class="hero-bg" aria-hidden="true"><img src="https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?auto=format&fit=crop&w=2200&q=80" alt=""></div>
+      <div class="hero-veil" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <p class="kicker kicker-light hero-anim" style="--d:.1s">Carnet de voyage · Asie du Sud-Est · Décembre 2026</p>
+        <h1 class="hero-title"><span class="line"><span class="hero-anim" style="--d:.2s">The</span></span><span class="line"><em class="hero-anim" style="--d:.35s">Hangover.</em></span></h1>
+        <p class="hero-sub hero-anim" style="--d:.55s">Des îles du sud aux montagnes du nord, jusqu'à l'énergie de Bangkok. Trois potes, seize jours, quatre escales.</p>
+        <div class="hero-actions hero-anim" style="--d:.7s">
+          <a class="btn btn-light" href="#voyage" data-magnetic>Découvrir le voyage <span aria-hidden="true">↓</span></a>
+          <a class="btn btn-ghost" href="#itineraire" data-magnetic>Le programme</a>
+        </div>
+      </div>
+      <figure class="polaroid hero-anim" style="--d:.5s" data-tilt>
+        <span class="tape" aria-hidden="true"></span>
+        <img src="couverture.jpg.png" alt="Le crew : les trois voyageurs au sommet d'une tour, au-dessus de Bangkok" data-zoom width="679" height="322">
+        <figcaption>Le crew. Prochaine escale : la Thaïlande.</figcaption>
+      </figure>
+      <div class="hero-stamp" aria-label="16 jours sur place">
+        <svg viewBox="0 0 120 120" aria-hidden="true"><defs><path id="stamp-circle" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs><text><textPath href="#stamp-circle" textLength="284" lengthAdjust="spacing">SEIZE JOURS SUR PLACE · THAÏLANDE 2026 ·</textPath></text></svg>
+        <b>16</b>
+      </div>
+      <a class="scroll-cue" href="#compte" aria-label="Faire défiler"><span></span></a>
     </section>
 
-    <section class="food-section section" id="bouffe">
-      <div class="section-heading"><div><div class="section-kicker">06 / À TABLE</div><h2>Bouffe<br><em>du coin.</em></h2></div><p>Les plats qu'on veut absolument goûter et une sélection d'adresses repérées autour de nos quatre bases. Les distances sont à vérifier selon le trajet exact : certaines adresses se rejoignent plus facilement en Grab ou en taxi.</p></div>
-      <div class="food-intro"><span class="eyebrow">LE PETIT GUIDE DES GOURMANDS</span><p>En Thaïlande, on mange dans la rue, au marché, dans les petites cantines et autour d'une grande table. L'idée : goûter un maximum de spécialités sans exploser le budget.</p></div>
-      <div class="food-dishes">
-        <article class="food-dish"><span class="food-emoji">🍜</span><div><h3>Pad thaï</h3><p>Nouilles sautées, œuf, tofu ou crevettes, cacahuètes et citron vert. Le classique à tester au moins une fois.</p></div><small>≈ 60–120 ฿</small></article>
-        <article class="food-dish"><span class="food-emoji">🥥</span><div><h3>Khao soi</h3><p>Soupe du nord au curry et lait de coco, nouilles tendres et croustillantes. À ne surtout pas manquer à Chiang Mai.</p></div><small>≈ 60–100 ฿</small></article>
-        <article class="food-dish"><span class="food-emoji">🌶️</span><div><h3>Pad kra pao</h3><p>Porc ou poulet sauté au basilic thaï, piment et ail, souvent servi avec du riz et un œuf au plat.</p></div><small>≈ 50–100 ฿</small></article>
-        <article class="food-dish"><span class="food-emoji">🍚</span><div><h3>Mango sticky rice</h3><p>Mangue mûre, riz gluant et lait de coco sucré. Le dessert à partager… ou pas.</p></div><small>≈ 50–100 ฿</small></article>
-        <article class="food-dish"><span class="food-emoji">🍲</span><div><h3>Tom yum goong</h3><p>Soupe acidulée et épicée aux crevettes, citronnelle, galanga et feuilles de combava.</p></div><small>≈ 100–180 ฿</small></article>
-        <article class="food-dish"><span class="food-emoji">🐟</span><div><h3>Fruits de mer grillés</h3><p>Poisson, calamars, crevettes et crabes : à privilégier sur la côte, surtout à Rawai.</p></div><small>Prix selon le poids</small></article>
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Phuket</span><i>✺</i><span>Khao Lak</span><i>✺</i><span>Chiang Mai</span><i>✺</i><span>Bangkok</span><i>✺</i><span>Mer d'Andaman</span><i>✺</i><span>Temples &amp; montagnes</span><i>✺</i><span>Street food</span><i>✺</i>
+        <span>Phuket</span><i>✺</i><span>Khao Lak</span><i>✺</i><span>Chiang Mai</span><i>✺</i><span>Bangkok</span><i>✺</i><span>Mer d'Andaman</span><i>✺</i><span>Temples &amp; montagnes</span><i>✺</i><span>Street food</span><i>✺</i>
       </div>
-      <div class="food-stops">
-        <article class="food-stop">
-          <div class="food-stop-head"><span class="tag">07—11 DÉC. · RAWAI</span><span class="food-stop-number">01</span></div>
-          <h3>Phuket <em>— les saveurs du sud</em></h3>
-          <p class="food-area">Autour de Blue Palm Seafront Resort · Rawai</p>
-          <div class="food-place"><div><b>Salaloy Seafood</b><p>La valeur sûre pour les fruits de mer au bord de Rawai Beach. À goûter : crevettes grillées, calamars et salade de fruits de mer.</p><small>Poisson & fruits de mer · budget moyen</small></div><a href="https://www.google.com/maps/search/?api=1&query=Salaloy+Seafood+Rawai+Phuket" target="_blank" rel="noopener">Carte ↗</a></div>
-          <div class="food-place"><div><b>Street Hut – Local Thai Food</b><p>Adresse décontractée pour manger thaï sans chichi, portions généreuses et plats classiques.</p><small>Cuisine thaï · bon rapport qualité-prix</small></div><a href="https://www.google.com/maps/search/?api=1&query=Street+Hut+Local+Thai+Food+Rawai" target="_blank" rel="noopener">Carte ↗</a></div>
-          <div class="food-place"><div><b>Mook Manee Seafood</b><p>Juste à côté du marché de poissons de Rawai : possibilité de choisir des produits de la mer et de les faire cuisiner. Demander le prix au kilo et les frais de cuisson avant de commander.</p><small>Expérience fruits de mer · prix variable</small></div><a href="https://www.google.com/maps/search/?api=1&query=Mook+Manee+Rawai" target="_blank" rel="noopener">Carte ↗</a></div>
-          <div class="food-tip">À ne pas rater : le marché de fruits de mer de Rawai et les spécialités du sud, souvent plus relevées.</div>
-        </article>
-        <article class="food-stop">
-          <div class="food-stop-head"><span class="tag">11—14 DÉC. · KHAO LAK</span><span class="food-stop-number">02</span></div>
-          <h3>Khao Lak <em>— marché & seafood</em></h3>
-          <p class="food-area">Autour de Khaolak Relax Resort · secteur Khuk Khak / Bang Niang</p>
-          <div class="food-place"><div><b>Bang Niang Market</b><p>Le spot à faire pour picorer : brochettes moo ping, brochettes de fruits de mer, roti à la banane, fruits frais et mango sticky rice. Vérifier les jours d'ouverture sur place.</p><small>Street food · petits prix</small></div><a href="https://www.google.com/maps/search/?api=1&query=Bang+Niang+Market+Khao+Lak" target="_blank" rel="noopener">Carte ↗</a></div>
-          <div class="food-place"><div><b>Takiang Restaurant</b><p>Restaurant thaï apprécié dans le secteur de Bang Niang, pour un vrai repas assis. Currys, poisson et plats thaïs traditionnels.</p><small>Thaï · prix modérés</small></div><a href="https://www.google.com/maps/search/?api=1&query=Takiang+Restaurant+Bang+Niang+Khao+Lak" target="_blank" rel="noopener">Carte ↗</a></div>
-          <div class="food-place"><div><b>Khaolak Curry Thai Restaurant</b><p>Une adresse bien notée pour les currys, le pad thaï et une cuisine thaï plus relevée. Préciser le niveau de piment souhaité.</p><small>Thaï · budget raisonnable</small></div><a href="https://www.google.com/maps/search/?api=1&query=Khaolak+Curry+Thai+Restaurant" target="_blank" rel="noopener">Carte ↗</a></div>
-          <div class="food-tip">À goûter : moo ping (porc grillé), roti banane, curry du sud et poisson grillé.</div>
-        </article>
-        <article class="food-stop">
-          <div class="food-stop-head"><span class="tag">14—19 DÉC. · HANG DONG</span><span class="food-stop-number">03</span></div>
-          <h3>Chiang Mai <em>— cuisine du nord</em></h3>
-          <p class="food-area">Autour de At Leaf Villa · Kad Farang, Hang Dong</p>
-          <div class="food-place"><div><b>Peth Lanna Restaurant</b><p>Une adresse de cuisine Lanna dans le complexe Kad Farang, pratique depuis votre villa. Parfait pour découvrir plusieurs spécialités du nord.</p><small>Cuisine du nord · dans le secteur de l'hôtel</small></div><a href="https://www.google.com/maps/search/?api=1&query=Peth+Lanna+Restaurant+Kad+Farang" target="_blank" rel="noopener">Carte ↗</a></div>
-          <div class="food-place"><div><b>Huen Phen Restaurant 2</b><p>Une bonne piste pour goûter les classiques du nord : khao soi, saucisse sai ua et plats Lanna. Situé vers Nong Kwai / Hang Dong, prévoir un trajet.</p><small>Cuisine du nord · trajet en voiture</small></div><a href="https://www.google.com/maps/search/?api=1&query=Huen+Phen+Restaurant+2+Hang+Dong" target="_blank" rel="noopener">Carte ↗</a></div>
-          <div class="food-place"><div><b>Yummy Hang Dong</b><p>Petite adresse locale connue notamment pour son khao soi, avec une version au crabe à carapace molle signalée par les habitués.</p><small>Khao soi · déjeuner</small></div><a href="https://www.google.com/maps/search/?api=1&query=Yummy+Hang+Dong+Chiang+Mai" target="_blank" rel="noopener">Carte ↗</a></div>
-          <div class="food-tip">Le plat obligatoire ici : khao soi. Et pour les plus curieux, goûter la sai ua, saucisse parfumée aux herbes du nord.</div>
-        </article>
-        <article class="food-stop">
-          <div class="food-stop-head"><span class="tag">19—22 DÉC. · BANGKOK</span><span class="food-stop-number">04</span></div>
-          <h3>Bangkok <em>— street food non-stop</em></h3>
-          <p class="food-area">Autour de Somerset Sukhumvit 71 · Phra Khanong / Watthana</p>
-          <div class="food-place"><div><b>Rosmuemaepridi</b><p>Cuisine thaï familiale sur Sukhumvit 71, pratique dans votre quartier. Une bonne option pour découvrir des plats maison et des recettes du sud.</p><small>Thaï maison · dans le quartier</small></div><a href="https://www.google.com/maps/search/?api=1&query=Rosmuemaepridi+Sukhumvit+71" target="_blank" rel="noopener">Carte ↗</a></div>
-          <div class="food-place"><div><b>Mahasamut Sukhumvit 71</b><p>Restaurant de fruits de mer et poissons, avec notamment des plats au crabe et du riz sauté aux fruits de mer.</p><small>Seafood · prix plus élevés qu'une cantine</small></div><a href="https://www.google.com/maps/search/?api=1&query=Mahasamut+Sukhumvit+71+Bangkok" target="_blank" rel="noopener">Carte ↗</a></div>
-          <div class="food-place"><div><b>Yaowarat / Chinatown</b><p>À intégrer à votre soirée du 19 : brochettes, nouilles, fruits de mer, desserts et stands de rue à enchaîner au fil des rues.</p><small>Street food · beaucoup de choix</small></div><a href="https://www.google.com/maps/search/?api=1&query=Yaowarat+Road+Chinatown+Bangkok" target="_blank" rel="noopener">Carte ↗</a></div>
-          <div class="food-tip">À goûter : pad kra pao, tom yum goong, guay jub (soupe de nouilles roulées) et desserts à la noix de coco.</div>
-        </article>
+    </div>
+
+    <!-- ===================== COMPTE À REBOURS / JOUR J ===================== -->
+    <section class="count" id="compte" aria-label="Compte à rebours avant l'arrivée">
+      <div class="count-head">
+        <span class="kicker kicker-light" id="count-kicker">Avant l'atterrissage à Phuket</span>
+        <strong id="count-title">On décolle <em>bientôt.</em></strong>
       </div>
-      <p class="food-disclaimer">Les prix sont des ordres de grandeur par plat, pas des tarifs garantis. Les horaires, jours d'ouverture et menus peuvent changer : vérifiez sur Google Maps avant de vous déplacer. Les adresses sont sélectionnées par zone, pas toutes à distance de marche de l'hôtel.</p>
+      <div class="count-clock" id="count-clock">
+        <div class="unit"><b id="count-days">—</b><span>Jours</span></div>
+        <div class="unit"><b id="count-hours">—</b><span>Heures</span></div>
+        <div class="unit"><b id="count-minutes">—</b><span>Minutes</span></div>
+        <div class="unit"><b id="count-seconds">—</b><span>Secondes</span></div>
+      </div>
+      <div class="count-trip" id="count-trip" hidden>
+        <div class="trip-bar"><span id="trip-fill"></span></div>
+        <a class="btn btn-light btn-sm" href="#itineraire" id="trip-today-link">Voir le programme du jour →</a>
+      </div>
+      <div class="clocks">
+        <div><span>Paris</span><b id="clock-fr">--:--</b></div>
+        <div><span>Thaïlande</span><b id="clock-th">--:--</b></div>
+        <small>Décalage : +6 h en décembre</small>
+      </div>
     </section>
 
-    <section class="practical section" id="pratique">
-      <div class="section-heading"><div><div class="section-kicker">07 / AVANT DE PARTIR</div><h2>Les repères<br><em>à garder en tête.</em></h2></div><p>Les informations pratiques reprises de votre document et les points à vérifier avant le départ.</p></div>
-      <div class="practical-grid">
-        <article><span class="practical-icon">↗</span><h3>Les vols intérieurs</h3><p>Priorité à la réservation des vols Phuket → Chiang Mai le 14 décembre et Chiang Mai → Bangkok le 19 décembre. Les horaires restent à choisir.</p></article>
-        <article><span class="practical-icon">≈</span><h3>Les excursions en bateau</h3><p>Phi Phi, James Bond Island, Krabi et Similan se font en bateau. Les excursions incluent souvent une prise en charge à l'hôtel : à vérifier auprès de chaque prestataire.</p></article>
-        <article><span class="practical-icon">☀</span><h3>Les îles Similan</h3><p>Ouverture saisonnière généralement de mi-octobre à mi-mai environ. Vérifier les dates officielles, la météo et l'état de la mer avant de réserver.</p></article>
-        <article><span class="practical-icon">⌁</span><h3>Se déplacer à Phuket</h3><p>Les déplacements sur l'île se font par la route. Comparer les tarifs des taxis avec Grab ou Bolt ; les taxis peuvent être chers.</p></article>
-        <article><span class="practical-icon">◷</span><h3>Les marges de sécurité</h3><p>Prévoir suffisamment de temps pour rejoindre l'aéroport de Phuket le 14 décembre et une marge importante avant le vol international du 22 décembre.</p></article>
-        <article><span class="practical-icon">✳</span><h3>Haute saison</h3><p>Décembre est une période très demandée. Réserver rapidement les vols et activités, en privilégiant si possible des conditions d'annulation flexibles.</p></article>
+    <!-- ===================== 01 LE VOYAGE ===================== -->
+    <section class="section intro" id="voyage">
+      <div class="wrap">
+        <div class="section-kicker reveal">01 — Le voyage</div>
+        <div class="intro-grid">
+          <h2 class="reveal">Du bleu profond<br><em>aux lumières de la ville.</em></h2>
+          <div class="intro-copy reveal" style="--d:.1s">
+            <p>Trois voyageurs, seize jours en Thaïlande et quatre bases pour prendre le temps de découvrir le pays. Au programme : sorties en mer, plages, nature, temples, cuisine locale et nuits animées.</p>
+            <p class="muted">Départ de France le 6 décembre 2026 · arrivée à Phuket le 7 décembre · retour depuis Bangkok le 22 décembre.</p>
+          </div>
+        </div>
+        <div class="stats">
+          <div class="stat reveal"><b data-count="3">3</b><span>Voyageurs</span></div>
+          <div class="stat reveal" style="--d:.08s"><b data-count="4">4</b><span>Étapes</span></div>
+          <div class="stat reveal" style="--d:.16s"><b data-count="15">15</b><span>Nuits</span></div>
+          <div class="stat reveal" style="--d:.24s"><b data-count="16">16</b><span>Jours sur place</span></div>
+        </div>
+        <div class="journey reveal" aria-label="Le parcours : Phuket, Khao Lak, Chiang Mai, Bangkok">
+          <svg class="journey-line" viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true"><path d="M20,90 C180,90 200,30 330,40 S560,110 670,60 S880,20 980,50"/></svg>
+          <a href="#fiche-phuket" class="journey-stop" style="--x:2%;--y:75%"><i>🏝️</i><b>Phuket</b><small>7–11 déc.</small></a>
+          <a href="#fiche-khaolak" class="journey-stop" style="--x:33%;--y:33%"><i>🌊</i><b>Khao Lak</b><small>11–14 déc.</small></a>
+          <a href="#fiche-chiangmai" class="journey-stop" style="--x:67%;--y:50%"><i>⛰️</i><b>Chiang Mai</b><small>14–19 déc.</small></a>
+          <a href="#fiche-bangkok" class="journey-stop" style="--x:98%;--y:42%"><i>🌃</i><b>Bangkok</b><small>19–22 déc.</small></a>
+        </div>
       </div>
-      <div class="checklist"><div><p class="eyebrow">PETITE CHECKLIST</p><h3>À réserver / confirmer</h3></div><ul><li><label><input type="checkbox"> Vol Phuket → Chiang Mai (14 déc.)</label></li><li><label><input type="checkbox"> Vol Chiang Mai → Bangkok (19 déc.)</label></li><li><label><input type="checkbox"> Excursion Krabi : 4 Islands ou Hong Islands</label></li><li><label><input type="checkbox"> Excursion Koh Phi Phi</label></li><li><label><input type="checkbox"> James Bond Island / baie de Phang Nga</label></li><li><label><input type="checkbox"> Ouverture et excursion Similan</label></li><li><label><input type="checkbox"> Cours de cuisine à Chiang Mai</label></li><li><label><input type="checkbox"> Sanctuaire d'éléphants sans monte</label></li></ul><p class="check-note">Cette checklist est enregistrée dans le navigateur de l'appareil utilisé.</p></div>
     </section>
 
+    <!-- ===================== 02 LES ÉTAPES ===================== -->
+    <section class="section stages" id="etapes">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="section-kicker reveal">02 — Les étapes</div><h2 class="reveal">Quatre escales,<br><em>un seul voyage.</em></h2></div>
+          <p class="reveal" style="--d:.1s">Le parcours descend dans le sud pour les îles et la mer d'Andaman, remonte vers les montagnes du nord, puis se termine dans la capitale. Pour chaque base : où l'on dort, ce qui est prévu, et ce qui vaut le détour dans le coin.</p>
+        </div>
 
+        <!-- Phuket -->
+        <article class="stage" id="fiche-phuket" style="--accent:#3f7f7a">
+          <div class="stage-media">
+            <figure class="stage-main reveal-img"><img loading="lazy" src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=1400&q=80" alt="Lagon turquoise et falaises calcaires, mer d'Andaman" data-zoom></figure>
+            <figure class="stage-thumb reveal-img" style="--d:.15s"><img loading="lazy" src="https://images.unsplash.com/photo-1684083338842-ee04a0ff8335?auto=format&fit=crop&w=700&q=80" alt="Façades colorées de la vieille ville de Phuket" data-zoom></figure>
+            <figure class="stage-thumb reveal-img" style="--d:.25s"><img loading="lazy" src="https://images.unsplash.com/photo-1674043549153-fd19e38b5197?auto=format&fit=crop&w=700&q=80" alt="Piton rocheux dans la baie de Phang Nga" data-zoom></figure>
+            <span class="stage-num" aria-hidden="true">01</span>
+          </div>
+          <div class="stage-body">
+            <span class="tag">7 – 11 décembre · 4 nuits</span>
+            <h3>Phuket <em>— la base du sud</em></h3>
+            <p class="lead">Plages, excursions en bateau et premières découvertes du sud thaïlandais. Rawai, à la pointe sud de l'île, est notre camp de base pour Phi Phi et la baie de Phang Nga.</p>
+            <dl class="facts">
+              <div><dt>On dort</dt><dd>Blue Palm Seafront Resort, à Rawai. Prévoir les transferts vers les embarcadères selon le tour choisi.</dd></div>
+              <div><dt>Au programme</dt><dd>8 déc. Wat Chalong et Phuket Old Town · 9 déc. Koh Phi Phi &amp; Maya Bay · 10 déc. baie de Phang Nga / James Bond Island · 11 déc. route vers Khao Lak.</dd></div>
+            </dl>
+            <div class="stage-links"><a class="link-arrow" href="#stay-phuket">Le logement</a><a class="link-arrow" href="#itineraire" data-show-days="phuket">Les journées</a></div>
+          </div>
+          <div class="nearby">
+            <h4>À voir dans le coin <small>idées en plus, rien n'est réservé</small></h4>
+            <div class="nearby-grid">
+              <a class="spot reveal" href="https://www.google.com/maps/search/?api=1&query=Promthep+Cape+Phuket" target="_blank" rel="noopener"><img loading="lazy" src="https://images.unsplash.com/photo-1481988535861-271139e06469?auto=format&fit=crop&w=700&q=75" alt="Coucher de soleil sur la mer et une île rocheuse"><div><span>Tout près de Rawai</span><b>Cap de Promthep</b><p>Le spot coucher de soleil le plus célèbre de l'île, à la pointe sud. Arriver tôt : il y a du monde.</p><em>Itinéraire ↗</em></div></a>
+              <a class="spot reveal" style="--d:.08s" href="https://www.google.com/maps/search/?api=1&query=Nai+Harn+Beach+Phuket" target="_blank" rel="noopener"><img loading="lazy" src="https://images.unsplash.com/photo-1675266472798-5754c0a7b434?auto=format&fit=crop&w=700&q=75" alt="Baie vue depuis une colline au sud de Phuket"><div><span>Voisine de Rawai</span><b>Plage de Nai Harn</b><p>Une des plus jolies plages du sud de l'île, idéale pour une baignade entre deux excursions.</p><em>Itinéraire ↗</em></div></a>
+              <a class="spot reveal" style="--d:.16s" href="https://www.google.com/maps/search/?api=1&query=Big+Buddha+Phuket" target="_blank" rel="noopener"><img loading="lazy" src="https://images.unsplash.com/photo-1707789189391-9fe2e754bb8b?auto=format&fit=crop&w=700&q=75" alt="Grande statue de Bouddha blanc au sommet d'une colline"><div><span>Colline de Nakkerd</span><b>Big Buddha</b><p>Bouddha de marbre blanc qui domine Chalong et la côte. Vue à 360° ; tenue couvrante demandée.</p><em>Itinéraire ↗</em></div></a>
+              <a class="spot reveal" style="--d:.24s" href="https://www.google.com/maps/search/?api=1&query=Koh+Hey+Coral+Island+Phuket" target="_blank" rel="noopener"><img loading="lazy" src="https://images.unsplash.com/photo-1686238349945-82074ce9f02f?auto=format&fit=crop&w=700&q=75" alt="Bateaux à longue queue sur une eau turquoise"><div><span>En bateau depuis Rawai</span><b>Coral Island (Koh Hey)</b><p>Petite île toute proche pour une demi-journée plage et snorkeling, si on a une matinée libre.</p><em>Itinéraire ↗</em></div></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Khao Lak -->
+        <article class="stage stage-rev" id="fiche-khaolak" style="--accent:#4f7f97">
+          <div class="stage-media">
+            <figure class="stage-main reveal-img"><img loading="lazy" src="https://images.unsplash.com/photo-1691222691453-b32eba6f451e?auto=format&fit=crop&w=1400&q=80" alt="Plage de sable de Khao Lak" data-zoom></figure>
+            <figure class="stage-thumb reveal-img" style="--d:.15s"><img loading="lazy" src="https://images.unsplash.com/photo-1656939214522-c7428f5e69bc?auto=format&fit=crop&w=700&q=80" alt="Rochers granitiques des îles Similan" data-zoom></figure>
+            <figure class="stage-thumb reveal-img" style="--d:.25s"><img loading="lazy" src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=700&q=80" alt="Plongeur au milieu d'un banc de poissons" data-zoom></figure>
+            <span class="stage-num" aria-hidden="true">02</span>
+          </div>
+          <div class="stage-body">
+            <span class="tag">11 – 14 décembre · 3 nuits</span>
+            <h3>Khao Lak <em>— pause nature</em></h3>
+            <p class="lead">Une parenthèse plus calme sur la côte d'Andaman, avec les îles Similan en point d'orgue. La position est idéale pour partir tôt vers les Similan, puis garder une journée sans excursion.</p>
+            <dl class="facts">
+              <div><dt>On dort</dt><dd>Khaolak Relax Resort, à Khuk Khak.</dd></div>
+              <div><dt>Au programme</dt><dd>12 déc. excursion Similan · 13 déc. repos et découverte locale · 14 déc. transfert vers l'aéroport de Phuket puis vol pour Chiang Mai.</dd></div>
+            </dl>
+            <div class="stage-links"><a class="link-arrow" href="#stay-khaolak">Le logement</a><a class="link-arrow" href="#itineraire" data-show-days="khaolak">Les journées</a></div>
+          </div>
+          <div class="nearby">
+            <h4>À voir dans le coin <small>idées en plus, rien n'est réservé</small></h4>
+            <div class="nearby-grid">
+              <a class="spot reveal" href="https://www.google.com/maps/search/?api=1&query=Bang+Niang+Beach+Khao+Lak" target="_blank" rel="noopener"><img loading="lazy" src="https://images.unsplash.com/photo-1590591870742-beb5b7c1f9b5?auto=format&fit=crop&w=700&q=75" alt="Silhouettes sur une plage au coucher du soleil"><div><span>Juste au sud de Khuk Khak</span><b>Bang Niang</b><p>Plage, marché de street food et mémorial du tsunami : le petit cœur animé du secteur.</p><em>Itinéraire ↗</em></div></a>
+              <a class="spot reveal" style="--d:.08s" href="https://www.google.com/maps/search/?api=1&query=Laem+Pakarang+Khao+Lak" target="_blank" rel="noopener"><img loading="lazy" src="https://images.unsplash.com/photo-1756801002518-b8bdaffe6b01?auto=format&fit=crop&w=700&q=75" alt="Coucher de soleil flamboyant sur l'océan"><div><span>Au nord de Khuk Khak</span><b>Cap Pakarang</b><p>Une pointe de sable et de corail, réputée pour ses couchers de soleil. Parfait pour la dernière soirée dans le sud.</p><em>Itinéraire ↗</em></div></a>
+              <a class="spot reveal" style="--d:.16s" href="https://www.google.com/maps/search/?api=1&query=Ton+Chong+Fa+Waterfall+Khao+Lak" target="_blank" rel="noopener"><img loading="lazy" src="https://images.unsplash.com/photo-1669732704369-e04c464be7d5?auto=format&fit=crop&w=700&q=75" alt="Cascade dans la forêt tropicale"><div><span>Dans les collines</span><b>Cascade Ton Chong Fa</b><p>Courte marche dans la jungle jusqu'à une cascade et ses bassins. Bonnes chaussures conseillées.</p><em>Itinéraire ↗</em></div></a>
+              <a class="spot reveal" style="--d:.24s" href="https://www.google.com/maps/search/?api=1&query=Khao+Lak+Lam+Ru+National+Park" target="_blank" rel="noopener"><img loading="lazy" src="https://images.unsplash.com/photo-1682699265600-9fe750e3b6f9?auto=format&fit=crop&w=700&q=75" alt="Mer calme au coucher du soleil avec un bateau au loin"><div><span>Côté Khao Lak centre</span><b>Parc national Lam Ru</b><p>Forêt, petites criques et sentier côtier : la nature brute à deux pas des resorts.</p><em>Itinéraire ↗</em></div></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Chiang Mai -->
+        <article class="stage" id="fiche-chiangmai" style="--accent:#7d8a52">
+          <div class="stage-media">
+            <figure class="stage-main reveal-img"><img loading="lazy" src="https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=1400&q=80" alt="Temple doré du nord de la Thaïlande" data-zoom></figure>
+            <figure class="stage-thumb reveal-img" style="--d:.15s"><img loading="lazy" src="https://images.unsplash.com/photo-1728892570095-0286ccac36cf?auto=format&fit=crop&w=700&q=80" alt="Grand chedi en ruine d'un temple de Chiang Mai" data-zoom></figure>
+            <figure class="stage-thumb reveal-img" style="--d:.25s"><img loading="lazy" src="https://images.unsplash.com/photo-1512553840337-276c0d80a43a?auto=format&fit=crop&w=700&q=80" alt="Pagodes de Doi Inthanon à l'heure dorée" data-zoom></figure>
+            <span class="stage-num" aria-hidden="true">03</span>
+          </div>
+          <div class="stage-body">
+            <span class="tag">14 – 19 décembre · 5 nuits</span>
+            <h3>Chiang Mai <em>— temples et montagnes</em></h3>
+            <p class="lead">Temples, cuisine du nord, montagnes et rencontre avec les éléphants. Le rythme ralentit, l'air se rafraîchit le soir.</p>
+            <dl class="facts">
+              <div><dt>On dort</dt><dd>At Leaf Villa, à Hang Dong, en périphérie sud-ouest. Les trajets vers la vieille ville nécessitent un véhicule, Grab ou taxi.</dd></div>
+              <div><dt>Au programme</dt><dd>15 déc. temples de la vieille ville · 16 déc. cours de cuisine · 17 déc. Doi Inthanon · 18 déc. sanctuaire d'éléphants sans monte.</dd></div>
+            </dl>
+            <div class="stage-links"><a class="link-arrow" href="#stay-chiangmai">Le logement</a><a class="link-arrow" href="#itineraire" data-show-days="chiangmai">Les journées</a></div>
+          </div>
+          <div class="nearby">
+            <h4>À voir dans le coin <small>idées en plus, rien n'est réservé</small></h4>
+            <div class="nearby-grid">
+              <a class="spot reveal" href="https://www.google.com/maps/search/?api=1&query=Wat+Phra+That+Doi+Suthep" target="_blank" rel="noopener"><img loading="lazy" src="https://images.unsplash.com/photo-1582118315324-a1af6b1c0582?auto=format&fit=crop&w=700&q=75" alt="Chedi doré sous le ciel bleu"><div><span>Sur la montagne qui domine la ville</span><b>Wat Phra That Doi Suthep</b><p>Le temple emblématique de Chiang Mai, son chedi doré et la vue sur toute la vallée.</p><em>Itinéraire ↗</em></div></a>
+              <a class="spot reveal" style="--d:.08s" href="https://www.google.com/maps/search/?api=1&query=Nimmanhaemin+Road+Chiang+Mai" target="_blank" rel="noopener"><img loading="lazy" src="https://images.unsplash.com/photo-1785482489658-2f101728f637?auto=format&fit=crop&w=700&q=75" alt="Terrasse de café animée"><div><span>À l'ouest de la vieille ville</span><b>Nimman</b><p>Le quartier branché : cafés, bars, petites boutiques. Idéal pour une soirée après le cours de cuisine.</p><em>Itinéraire ↗</em></div></a>
+              <a class="spot reveal" style="--d:.16s" href="https://www.google.com/maps/search/?api=1&query=Chiang+Mai+Night+Bazaar" target="_blank" rel="noopener"><img loading="lazy" src="https://images.unsplash.com/photo-1741245957175-a32972773900?auto=format&fit=crop&w=700&q=75" alt="Marché de nuit bondé sous des lanternes"><div><span>Chaque soir, à l'est des remparts</span><b>Night Bazaar</b><p>Le grand marché de nuit : souvenirs, artisanat et stands de street food à tester en groupe.</p><em>Itinéraire ↗</em></div></a>
+              <a class="spot reveal" style="--d:.24s" href="https://www.google.com/maps/search/?api=1&query=Thai+massage+Hang+Dong+Chiang+Mai" target="_blank" rel="noopener"><img loading="lazy" src="https://images.unsplash.com/photo-1741522509438-a120c0bb5e88?auto=format&fit=crop&w=700&q=75" alt="Massage du dos"><div><span>Un peu partout</span><b>Massage thaï</b><p>Après Doi Inthanon, les jambes diront merci. Comparer les salons et demander le tarif avant.</p><em>Trouver un salon ↗</em></div></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Bangkok -->
+        <article class="stage stage-rev stage-night" id="fiche-bangkok" style="--accent:#c0874d">
+          <div class="stage-media">
+            <figure class="stage-main reveal-img"><img loading="lazy" src="https://images.unsplash.com/photo-1601224335112-b74158e231ec?auto=format&fit=crop&w=1400&q=80" alt="Wat Arun au coucher du soleil, Bangkok" data-zoom></figure>
+            <figure class="stage-thumb reveal-img" style="--d:.15s"><img loading="lazy" src="https://images.unsplash.com/photo-1563492065599-3520f775eeed?auto=format&fit=crop&w=700&q=80" alt="Toits du Grand Palais de Bangkok" data-zoom></figure>
+            <figure class="stage-thumb reveal-img" style="--d:.25s"><img loading="lazy" src="https://images.unsplash.com/photo-1656299435456-41f88298b11c?auto=format&fit=crop&w=700&q=80" alt="Enseignes au néon de Yaowarat, le Chinatown de Bangkok" data-zoom></figure>
+            <span class="stage-num" aria-hidden="true">04</span>
+          </div>
+          <div class="stage-body">
+            <span class="tag">19 – 22 décembre · 3 nuits</span>
+            <h3>Bangkok <em>— la grande finale</em></h3>
+            <p class="lead">Marchés, temples, street food et dernières heures avant le retour. Forcément, la ville la plus « Hangover » du voyage.</p>
+            <dl class="facts">
+              <div><dt>On dort</dt><dd>Somerset Sukhumvit 71, à l'est du centre historique. Trajets en BTS, MRT, bateau ou taxi selon les visites.</dd></div>
+              <div><dt>Au programme</dt><dd>19 déc. Chinatown le soir · 20 déc. Chatuchak (dimanche) · 21 déc. Grand Palace, Wat Pho et Wat Arun · 22 déc. retour.</dd></div>
+            </dl>
+            <div class="stage-links"><a class="link-arrow" href="#stay-bangkok">Le logement</a><a class="link-arrow" href="#itineraire" data-show-days="bangkok">Les journées</a></div>
+          </div>
+          <div class="nearby">
+            <h4>À voir dans le coin <small>idées en plus, rien n'est réservé</small></h4>
+            <div class="nearby-grid">
+              <a class="spot spot-feature reveal" href="https://www.google.com/maps/search/?api=1&query=Sky+Bar+lebua+State+Tower+Bangkok" target="_blank" rel="noopener"><img loading="lazy" src="https://images.unsplash.com/photo-1729606451863-d0a1e195e4a9?auto=format&fit=crop&w=700&q=75" alt="Silhouette au sommet d'une tour au-dessus de Bangkok"><div><span>Pèlerinage obligatoire</span><b>Sky Bar, lebua</b><p>Le bar perché de la State Tower, à Silom, où ont été tournées des scènes de <i>Very Bad Trip 2</i>. Tenue correcte exigée, cocktails très chers.</p><em>Itinéraire ↗</em></div></a>
+              <a class="spot reveal" style="--d:.08s" href="https://www.google.com/maps/search/?api=1&query=Khao+San+Road+Bangkok" target="_blank" rel="noopener"><img loading="lazy" src="https://images.unsplash.com/photo-1644130153449-be672c1cbff3?auto=format&fit=crop&w=700&q=75" alt="Rue animée de néons la nuit"><div><span>Près du centre historique</span><b>Khao San Road</b><p>La rue mythique des routards : bars, musique et street food jusque tard. Une soirée, pas plus.</p><em>Itinéraire ↗</em></div></a>
+              <a class="spot reveal" style="--d:.16s" href="https://www.google.com/maps/search/?api=1&query=Rajadamnern+Stadium+Bangkok" target="_blank" rel="noopener"><img loading="lazy" src="https://images.unsplash.com/photo-1773289337835-7703c1f03d59?auto=format&fit=crop&w=700&q=75" alt="Deux boxeurs sur un ring"><div><span>En soirée</span><b>Muay thaï à Rajadamnern</b><p>Voir un vrai combat dans le stade historique. Horaires et tarifs à vérifier avant.</p><em>Itinéraire ↗</em></div></a>
+              <a class="spot reveal" style="--d:.24s" href="https://www.google.com/maps/search/?api=1&query=Sathorn+Pier+Bangkok" target="_blank" rel="noopener"><img loading="lazy" src="https://images.unsplash.com/photo-1752543523389-c26fdc311456?auto=format&fit=crop&w=700&q=75" alt="Bateau sur la Chao Phraya devant un temple au coucher du soleil"><div><span>Le long du fleuve</span><b>Bateau sur la Chao Phraya</b><p>Les bateaux express relient les embarcadères le long du fleuve : la plus belle balade pas chère de Bangkok.</p><em>Itinéraire ↗</em></div></a>
+            </div>
+            <p class="nearby-note">Le soir, Ekkamai et Thonglor (bars, restos) sont à quelques stations de BTS de l'hôtel.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===================== 03 HÉBERGEMENTS ===================== -->
+    <section class="section lodgings" id="hebergements">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="section-kicker reveal">03 — Les hébergements</div><h2 class="reveal">Nos points<br><em>de chute.</em></h2></div>
+          <p class="reveal" style="--d:.1s">Les hébergements communiqués, avec leurs dates de séjour et les liens Booking. Les photos d'ambiance ne sont pas des photos contractuelles des établissements.</p>
+        </div>
+        <div class="stay-grid">
+          <article class="stay reveal" id="stay-phuket">
+            <figure class="stay-media"><img loading="lazy" src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1100&q=80" alt="Blue Palm Seafront Resort – photo d'ambiance" data-zoom><span class="stay-num">01</span><a class="chip-link" href="https://seafront.bluepalmhotels.com/en/gallery" target="_blank" rel="noopener">Galerie de l'hôtel ↗</a></figure>
+            <div class="stay-body">
+              <div class="stay-top"><span class="tag">Phuket · Rawai</span><span class="date">7 → 11 déc. · 4 nuits</span></div>
+              <h3>Blue Palm Seafront Resort Phuket</h3>
+              <p class="address"><span>54/14 Moo 6, Rawai Beach, Phuket, Thaïlande</span><button class="copy" type="button" data-copy="54/14 Moo 6, Rawai Beach, Phuket, Thailand">Copier</button></p>
+              <ul class="stay-details"><li><b>Arrivée</b> 14h–22h</li><li><b>Départ</b> avant 12h</li><li><b>Réservation</b> 3 adultes · 2 chambres</li></ul>
+              <div class="stay-actions"><a class="btn btn-dark btn-sm" href="https://www.booking.com/hotel/th/blue-palm-seafront-resort-phuket.fr.html" target="_blank" rel="noopener">Voir sur Booking ↗</a><a class="link-arrow" href="https://www.google.com/maps/search/?api=1&query=Blue+Palm+Seafront+Resort+Phuket" target="_blank" rel="noopener">Ouvrir la carte</a></div>
+            </div>
+          </article>
+          <article class="stay reveal" style="--d:.08s" id="stay-khaolak">
+            <figure class="stay-media"><img loading="lazy" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1100&q=80" alt="Khaolak Relax Resort – photo d'ambiance" data-zoom><span class="stay-num">02</span><a class="chip-link" href="https://www.booking.com/hotel/th/khaolak-relax-resort.fr.html" target="_blank" rel="noopener">Photos sur Booking ↗</a></figure>
+            <div class="stay-body">
+              <div class="stay-top"><span class="tag">Khao Lak · Phang Nga</span><span class="date">11 → 14 déc. · 3 nuits</span></div>
+              <h3>Khaolak Relax Resort</h3>
+              <p class="address"><span>30/47 Moo 3, Khuk Khak, Takua Pa, Phang Nga 82190, Thaïlande</span><button class="copy" type="button" data-copy="30/47 Moo 3, Khuk Khak, Takua Pa, Phang Nga 82190, Thailand">Copier</button></p>
+              <ul class="stay-details"><li><b>Arrivée / départ</b> à confirmer</li><li><b>Réservation</b> 3 adultes · 2 chambres</li></ul>
+              <div class="stay-actions"><a class="btn btn-dark btn-sm" href="https://www.booking.com/hotel/th/khaolak-relax-resort.fr.html" target="_blank" rel="noopener">Voir sur Booking ↗</a><a class="link-arrow" href="https://www.google.com/maps/search/?api=1&query=Khaolak+Relax+Resort" target="_blank" rel="noopener">Ouvrir la carte</a></div>
+            </div>
+          </article>
+          <article class="stay reveal" id="stay-chiangmai">
+            <figure class="stay-media"><img loading="lazy" src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1100&q=80" alt="At Leaf Villa – photo d'ambiance" data-zoom><span class="stay-num">03</span><a class="chip-link" href="https://www.booking.com/hotel/th/at-leaf-villa.fr.html" target="_blank" rel="noopener">Photos sur Booking ↗</a></figure>
+            <div class="stay-body">
+              <div class="stay-top"><span class="tag">Chiang Mai · Hang Dong</span><span class="date">14 → 19 déc. · 5 nuits</span></div>
+              <h3>At Leaf Villa</h3>
+              <p class="address"><span>225/329 Kad Farang, Chiangmai-Hang Dong Road, Ban Waen, Hang Dong, Chiang Mai 50230, Thaïlande</span><button class="copy" type="button" data-copy="225/329 Kad Farang, Chiangmai-Hang Dong Road, Ban Waen, Hang Dong, Chiang Mai 50230, Thailand">Copier</button></p>
+              <ul class="stay-details"><li><b>Arrivée</b> 14h</li><li><b>Départ</b> 12h</li><li><b>Réservation</b> 3 adultes · 2 chambres</li></ul>
+              <div class="stay-actions"><a class="btn btn-dark btn-sm" href="https://www.booking.com/hotel/th/at-leaf-villa.fr.html" target="_blank" rel="noopener">Voir sur Booking ↗</a><a class="link-arrow" href="https://www.google.com/maps/search/?api=1&query=At+Leaf+Villa+Chiang+Mai" target="_blank" rel="noopener">Ouvrir la carte</a></div>
+            </div>
+          </article>
+          <article class="stay reveal" style="--d:.08s" id="stay-bangkok">
+            <figure class="stay-media"><img loading="lazy" src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=1100&q=80" alt="Somerset Sukhumvit 71 – photo d'ambiance" data-zoom><span class="stay-num">04</span><a class="chip-link" href="https://www.booking.com/hotel/th/somerset-sukhumvit-71-bangkok.fr.html" target="_blank" rel="noopener">Photos sur Booking ↗</a></figure>
+            <div class="stay-body">
+              <div class="stay-top"><span class="tag">Bangkok · Sukhumvit 71</span><span class="date">19 → 22 déc. · 3 nuits</span></div>
+              <h3>Somerset Sukhumvit 71 Bangkok</h3>
+              <p class="address"><span>1015/29 Pridi Banomyong 45, Sukhumvit 71 Road, Khlong Tan Nuea, Watthana, Bangkok 10110, Thaïlande</span><button class="copy" type="button" data-copy="1015/29 Pridi Banomyong 45, Sukhumvit 71 Road, Khlong Tan Nuea, Watthana, Bangkok 10110, Thailand">Copier</button></p>
+              <ul class="stay-details"><li><b>Arrivée</b> 14h</li><li><b>Départ</b> avant 12h</li><li><b>Réservation</b> 3 adultes · 2 chambres</li></ul>
+              <div class="stay-actions"><a class="btn btn-dark btn-sm" href="https://www.booking.com/hotel/th/somerset-sukhumvit-71-bangkok.fr.html" target="_blank" rel="noopener">Voir sur Booking ↗</a><a class="link-arrow" href="https://www.google.com/maps/search/?api=1&query=Somerset+Sukhumvit+71+Bangkok" target="_blank" rel="noopener">Ouvrir la carte</a></div>
+            </div>
+          </article>
+        </div>
+        <p class="small-note">Les tarifs, conditions d'annulation, catégories de chambres et numéros de réservation ne sont pas renseignés ici : vérifiez-les directement dans vos confirmations Booking. Le bouton « Copier » met l'adresse en anglais dans le presse-papiers, pratique pour un chauffeur ou Grab.</p>
+      </div>
+    </section>
+
+    <!-- ===================== 04 JOUR APRÈS JOUR ===================== -->
+    <section class="section route" id="itineraire">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="section-kicker reveal">04 — Jour après jour</div><h2 class="reveal">Le fil<br><em>du voyage.</em></h2></div>
+          <p class="reveal" style="--d:.1s">Chaque journée se déplie pour afficher les étapes dans l'ordre, les horaires indicatifs et une estimation du budget par personne.</p>
+        </div>
+        <div class="route-controls" role="group" aria-label="Filtrer les étapes">
+          <button class="filter active" type="button" data-filter="all">Tout le voyage</button>
+          <button class="filter" type="button" data-filter="phuket">Phuket</button>
+          <button class="filter" type="button" data-filter="khaolak">Khao Lak</button>
+          <button class="filter" type="button" data-filter="chiangmai">Chiang Mai</button>
+          <button class="filter" type="button" data-filter="bangkok">Bangkok</button>
+          <button class="filter filter-ghost" type="button" id="expand-all" aria-pressed="false">Tout déplier</button>
+        </div>
+        <div class="timeline" id="timeline">
+          <div class="timeline-rail" aria-hidden="true"><span id="timeline-fill"></span></div>
+
+          <article class="day reveal" data-place="phuket" data-date="2026-12-07"><div class="day-date"><span>Lun.</span><b>07</b><small>Déc.</small></div><div class="day-card"><figure class="day-media"><img loading="lazy" src="https://images.unsplash.com/photo-1771945484043-3a17fbf57a4b?auto=format&fit=crop&w=900&q=78" alt="Arrivée à Phuket" data-zoom><figcaption>Arrivée à Phuket</figcaption></figure><div class="day-body"><div class="day-meta"><span class="day-place">Phuket · Arrivée</span><span class="day-kind">Installation</span></div><h3>Bienvenue en Thaïlande</h3><p>Arrivée, transfert vers Rawai et installation au Blue Palm. Journée légère après le vol.</p><details class="day-details"><summary><span>Voir le programme détaillé</span><i aria-hidden="true"></i></summary><div class="day-detail-content"><ol><li><time>Selon arrivée</time><div><b>Aéroport → Rawai</b><p>Environ 1 h à 1 h 15.</p></div></li><li><time>Fin d'après-midi</time><div><b>Rawai Beach</b><p>Première balade ou piscine.</p></div></li><li><time>Soir</time><div><b>Dîner à Rawai</b><p>Repas dans le quartier.</p></div></li></ol><p class="day-cost">Budget estimé : 300–700 THB (8–18 €), hors transfert aéroport.</p><p class="day-caveat">Horaires indicatifs, à adapter aux réservations, à la météo et aux trajets réels.</p></div></details></div></div></article>
+
+          <article class="day reveal" data-place="phuket" data-date="2026-12-08"><div class="day-date"><span>Mar.</span><b>08</b><small>Déc.</small></div><div class="day-card"><figure class="day-media"><img loading="lazy" src="https://images.unsplash.com/photo-1684083338842-ee04a0ff8335?auto=format&fit=crop&w=900&q=78" alt="Vieille ville de Phuket" data-zoom><figcaption>Vieille ville de Phuket</figcaption></figure><div class="day-body"><div class="day-meta"><span class="day-place">Phuket · Phuket Town</span><span class="day-kind">Culture</span></div><h3>Wat Chalong &amp; Phuket Old Town</h3><p>Temples le matin, puis ruelles colorées et cafés de la vieille ville. Pas d'excursion en bateau.</p><details class="day-details"><summary><span>Voir le programme détaillé</span><i aria-hidden="true"></i></summary><div class="day-detail-content"><ol><li><time>08h30</time><div><b>Départ de Rawai</b><p>40–60 min de route.</p></div></li><li><time>09h30</time><div><b>Wat Chalong</b><p>Visite du temple, épaules et genoux couverts.</p></div></li><li><time>11h00</time><div><b>Déjeuner</b><p>Pause dans le secteur de Chalong.</p></div></li><li><time>13h00</time><div><b>Phuket Old Town</b><p>Thalang Road, Soi Romanee et façades sino-portugaises.</p></div></li><li><time>16h00</time><div><b>Retour à Rawai</b><p>Soirée libre.</p></div></li></ol><p class="day-cost">Budget estimé : 0–200 THB (0–5 €) d'entrées, hors repas et transport.</p><p class="day-caveat">Horaires indicatifs, à adapter aux réservations, à la météo et aux trajets réels.</p></div></details></div></div></article>
+
+          <article class="day reveal" data-place="phuket" data-date="2026-12-09"><div class="day-date"><span>Mer.</span><b>09</b><small>Déc.</small></div><div class="day-card"><figure class="day-media"><img loading="lazy" src="https://images.unsplash.com/photo-1767097504474-fbd01a7cc926?auto=format&fit=crop&w=900&q=78" alt="Maya Bay &amp; Phi Phi" data-zoom><figcaption>Maya Bay &amp; Phi Phi</figcaption></figure><div class="day-body"><div class="day-meta"><span class="day-place">Phuket · Koh Phi Phi</span><span class="day-kind">Excursion en mer</span></div><h3>Maya Bay &amp; les îles Phi Phi</h3><p>Speedboat, Maya Bay, lagons et snorkeling selon la mer. Baignade interdite à Maya Bay.</p><details class="day-details"><summary><span>Voir le programme détaillé</span><i aria-hidden="true"></i></summary><div class="day-detail-content"><ol><li><time>06h30–07h30</time><div><b>Pickup à l'hôtel</b><p>Horaire confirmé par l'opérateur.</p></div></li><li><time>08h00</time><div><b>Embarquement</b><p>Départ en speedboat.</p></div></li><li><time>09h00</time><div><b>Maya Bay</b><p>Visite réglementée, pas de baignade.</p></div></li><li><time>10h30</time><div><b>Pileh Lagoon</b><p>Arrêt photo / baignade si autorisée.</p></div></li><li><time>12h00</time><div><b>Phi Phi Don</b><p>Déjeuner et temps libre.</p></div></li><li><time>14h00</time><div><b>Snorkeling</b><p>Arrêt sur un récif.</p></div></li><li><time>16h00–17h00</time><div><b>Retour à Rawai</b><p>Transfert à l'hôtel.</p></div></li></ol><p class="day-cost">Budget estimé : 2 000–3 100 THB (53–82 €) / personne. Vérifier si les 400 THB de parc sont inclus.</p><p class="day-caveat">Horaires indicatifs, à adapter aux réservations, à la météo et aux trajets réels.</p></div></details></div></div></article>
+
+          <article class="day reveal" data-place="phuket" data-date="2026-12-10"><div class="day-date"><span>Jeu.</span><b>10</b><small>Déc.</small></div><div class="day-card"><figure class="day-media"><img loading="lazy" src="https://images.unsplash.com/photo-1674043549153-fd19e38b5197?auto=format&fit=crop&w=900&q=78" alt="Baie de Phang Nga" data-zoom><figcaption>Baie de Phang Nga</figcaption></figure><div class="day-body"><div class="day-meta"><span class="day-place">Phuket · Phang Nga</span><span class="day-kind">Excursion en mer</span></div><h3>James Bond Island &amp; mangroves</h3><p>Baie karstique, canoë dans les grottes / hongs selon le circuit, puis James Bond Island.</p><details class="day-details"><summary><span>Voir le programme détaillé</span><i aria-hidden="true"></i></summary><div class="day-detail-content"><ol><li><time>07h00–08h00</time><div><b>Pickup à Rawai</b><p>Horaire selon prestataire.</p></div></li><li><time>09h00</time><div><b>Embarquement</b><p>Départ vers la baie.</p></div></li><li><time>10h30</time><div><b>Canoë / kayak</b><p>Grottes et lagons accompagnés.</p></div></li><li><time>12h00</time><div><b>Déjeuner</b><p>Souvent inclus.</p></div></li><li><time>13h30</time><div><b>James Bond Island</b><p>Khao Phing Kan et Ko Tapu.</p></div></li><li><time>15h00</time><div><b>Retour</b><p>Arrêts selon météo.</p></div></li><li><time>17h00–18h00</time><div><b>Rawai</b><p>Retour à l'hôtel.</p></div></li></ol><p class="day-cost">Budget estimé : 1 700–2 800 THB (45–74 €) / personne. Vérifier frais de parc et inclusions.</p><p class="day-caveat">Horaires indicatifs, à adapter aux réservations, à la météo et aux trajets réels.</p></div></details></div></div></article>
+
+          <article class="day reveal" data-place="khaolak" data-date="2026-12-11"><div class="day-date"><span>Ven.</span><b>11</b><small>Déc.</small></div><div class="day-card"><figure class="day-media"><img loading="lazy" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=900&q=78" alt="Route vers Khao Lak" data-zoom><figcaption>Route vers Khao Lak</figcaption></figure><div class="day-body"><div class="day-meta"><span class="day-place">Phuket → Khao Lak</span><span class="day-kind">Transfert</span></div><h3>De Rawai à Khao Lak</h3><p>Route vers Khuk Khak et installation au Khaolak Relax Resort. Pas de grosse activité prévue.</p><details class="day-details"><summary><span>Voir le programme détaillé</span><i aria-hidden="true"></i></summary><div class="day-detail-content"><ol><li><time>09h00</time><div><b>Check-out</b><p>Départ après le petit-déjeuner.</p></div></li><li><time>09h00–12h00</time><div><b>Route vers Khao Lak</b><p>Environ 2 h 30 à 3 h.</p></div></li><li><time>12h00</time><div><b>Déjeuner</b><p>Pause et dépôt des bagages.</p></div></li><li><time>15h00</time><div><b>Installation</b><p>Plage ou piscine.</p></div></li><li><time>Soir</time><div><b>Dîner</b><p>Soirée tranquille.</p></div></li></ol><p class="day-cost">Budget estimé : Transfert privé à partager + repas.</p><p class="day-caveat">Horaires indicatifs, à adapter aux réservations, à la météo et aux trajets réels.</p></div></details></div></div></article>
+
+          <article class="day reveal" data-place="khaolak" data-date="2026-12-12"><div class="day-date"><span>Sam.</span><b>12</b><small>Déc.</small></div><div class="day-card"><figure class="day-media"><img loading="lazy" src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=900&q=78" alt="Îles Similan" data-zoom><figcaption>Îles Similan</figcaption></figure><div class="day-body"><div class="day-meta"><span class="day-place">Khao Lak · Similan</span><span class="day-kind">Excursion en mer</span></div><h3>Les îles Similan</h3><p>Journée complète : plages, Sail Rock et snorkeling. Saison officielle annoncée du 15 oct. 2026 au 15 mai 2027 ; sortie soumise à la météo.</p><details class="day-details"><summary><span>Voir le programme détaillé</span><i aria-hidden="true"></i></summary><div class="day-detail-content"><ol><li><time>06h00–07h00</time><div><b>Pickup hôtel</b><p>Transfert vers Thap Lamu.</p></div></li><li><time>07h30</time><div><b>Speedboat</b><p>Traversée 60–80 min environ.</p></div></li><li><time>09h00</time><div><b>Island 4 / Koh Miang</b><p>Plage selon itinéraire.</p></div></li><li><time>11h00</time><div><b>Snorkeling</b><p>Récif et poissons.</p></div></li><li><time>12h30</time><div><b>Déjeuner</b><p>Souvent inclus.</p></div></li><li><time>14h00</time><div><b>Island 8 / Koh Similan</b><p>Donald Duck Bay et Sail Rock si conditions adaptées.</p></div></li><li><time>15h00–17h00</time><div><b>Retour</b><p>Bateau puis transfert hôtel.</p></div></li></ol><p class="day-cost">Budget estimé : 2 300–3 600 THB (61–95 €) / personne. Vérifier frais de parc inclus.</p><p class="day-caveat">Horaires indicatifs, à adapter aux réservations, à la météo et aux trajets réels.</p></div></details></div></div></article>
+
+          <article class="day reveal" data-place="khaolak" data-date="2026-12-13"><div class="day-date"><span>Dim.</span><b>13</b><small>Déc.</small></div><div class="day-card"><figure class="day-media"><img loading="lazy" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=78" alt="Plage &amp; détente" data-zoom><figcaption>Plage &amp; détente</figcaption></figure><div class="day-body"><div class="day-meta"><span class="day-place">Khao Lak</span><span class="day-kind">Temps libre</span></div><h3>Plage &amp; découverte locale</h3><p>Journée repos après les Similan. Khuk Khak / Bang Niang selon envie et transports.</p><details class="day-details"><summary><span>Voir le programme détaillé</span><i aria-hidden="true"></i></summary><div class="day-detail-content"><ol><li><time>Matin</time><div><b>Petit-déjeuner tranquille</b><p>Piscine ou plage.</p></div></li><li><time>11h00</time><div><b>Plage de Khuk Khak</b><p>Baignade si mer calme.</p></div></li><li><time>Après-midi</time><div><b>Bang Niang</b><p>Marché / commerces selon ouverture, taxi ou Grab.</p></div></li><li><time>Fin de journée</time><div><b>Mémorial du tsunami (option)</b><p>Lieu de mémoire.</p></div></li><li><time>Soir</time><div><b>Dîner local</b><p>Dernière soirée dans le sud.</p></div></li></ol><p class="day-cost">Budget estimé : Quasi gratuit, prévoir transports et repas.</p><p class="day-caveat">Horaires indicatifs, à adapter aux réservations, à la météo et aux trajets réels.</p></div></details></div></div></article>
+
+          <article class="day reveal" data-place="chiangmai" data-date="2026-12-14"><div class="day-date"><span>Lun.</span><b>14</b><small>Déc.</small></div><div class="day-card"><figure class="day-media"><img loading="lazy" src="https://images.unsplash.com/photo-1543797414-a0c3ad076f7c?auto=format&fit=crop&w=900&q=78" alt="Du sud au nord" data-zoom><figcaption>Du sud au nord</figcaption></figure><div class="day-body"><div class="day-meta"><span class="day-place">Khao Lak → Chiang Mai</span><span class="day-kind">Transfert &amp; vol</span></div><h3>Du sud au nord</h3><p>Route vers Phuket Airport puis vol pour Chiang Mai. Horaire du vol à vérifier sur le billet.</p><details class="day-details"><summary><span>Voir le programme détaillé</span><i aria-hidden="true"></i></summary><div class="day-detail-content"><ol><li><time>Matin</time><div><b>Check-out et transfert</b><p>Khao Lak → aéroport : 1 h 15 à 1 h 30.</p></div></li><li><time>Journée</time><div><b>Vol Phuket → Chiang Mai</b><p>Selon horaire réservé.</p></div></li><li><time>Après arrivée</time><div><b>Transfert à Hang Dong</b><p>At Leaf Villa, environ 20–30 min en voiture.</p></div></li><li><time>Soir</time><div><b>Installation &amp; dîner</b><p>Repos près de Kad Farang.</p></div></li></ol><p class="day-cost">Budget estimé : Transferts et vol intérieur non inclus.</p><p class="day-caveat">Horaires indicatifs, à adapter aux réservations, à la météo et aux trajets réels.</p></div></details></div></div></article>
+
+          <article class="day reveal" data-place="chiangmai" data-date="2026-12-15"><div class="day-date"><span>Mar.</span><b>15</b><small>Déc.</small></div><div class="day-card"><figure class="day-media"><img loading="lazy" src="https://images.unsplash.com/photo-1728892570095-0286ccac36cf?auto=format&fit=crop&w=900&q=78" alt="Temples de Chiang Mai" data-zoom><figcaption>Temples de Chiang Mai</figcaption></figure><div class="day-body"><div class="day-meta"><span class="day-place">Chiang Mai · Vieille ville</span><span class="day-kind">Temples</span></div><h3>Les temples de la vieille ville</h3><p>Boucle à pied dans le centre historique : trois temples proches. Depuis Hang Dong, rejoignez le centre en Grab / taxi.</p><details class="day-details"><summary><span>Voir le programme détaillé</span><i aria-hidden="true"></i></summary><div class="day-detail-content"><ol><li><time>08h30</time><div><b>Départ Hang Dong</b><p>20–30 min de route.</p></div></li><li><time>09h00</time><div><b>Wat Chedi Luang</b><p>Entrée étrangère autour de 50 THB.</p></div></li><li><time>10h30</time><div><b>Wat Phra Singh</b><p>Temple majeur, certains espaces payants.</p></div></li><li><time>12h00</time><div><b>Déjeuner</b><p>Cuisine locale.</p></div></li><li><time>13h30</time><div><b>Wat Chiang Man</b><p>Visite courte.</p></div></li><li><time>15h00</time><div><b>Tha Phae Gate &amp; Three Kings</b><p>Balade dans le centre.</p></div></li><li><time>16h30</time><div><b>Retour Hang Dong</b><p>Fin de journée libre.</p></div></li></ol><p class="day-cost">Budget estimé : 50–100 THB (1–3 €) d'entrées, hors transport et repas.</p><p class="day-caveat">Horaires indicatifs, à adapter aux réservations, à la météo et aux trajets réels.</p></div></details></div></div></article>
+
+          <article class="day reveal" data-place="chiangmai" data-date="2026-12-16"><div class="day-date"><span>Mer.</span><b>16</b><small>Déc.</small></div><div class="day-card"><figure class="day-media"><img loading="lazy" src="https://images.unsplash.com/photo-1794930590840-c8eae6ea25b6?auto=format&fit=crop&w=900&q=78" alt="Cours de cuisine thaïlandaise" data-zoom><figcaption>Cours de cuisine thaïlandaise</figcaption></figure><div class="day-body"><div class="day-meta"><span class="day-place">Chiang Mai · Cooking class</span><span class="day-kind">Cuisine</span></div><h3>Apprendre à cuisiner thaï</h3><p>Cours en petit groupe : marché, préparation de plusieurs plats et dégustation. Vérifier le pickup à Hang Dong.</p><details class="day-details"><summary><span>Voir le programme détaillé</span><i aria-hidden="true"></i></summary><div class="day-detail-content"><ol><li><time>08h00–09h00</time><div><b>Pickup / rendez-vous</b><p>Selon l'école.</p></div></li><li><time>09h00</time><div><b>Marché local</b><p>Herbes, sauces et ingrédients.</p></div></li><li><time>10h00</time><div><b>Cours de cuisine</b><p>Préparation de plusieurs plats.</p></div></li><li><time>12h30</time><div><b>Déjeuner</b><p>Dégustation de vos plats.</p></div></li><li><time>14h00–15h00</time><div><b>Retour hébergement</b><p>Après-midi libre.</p></div></li></ol><p class="day-cost">Budget estimé : 750–1 800 THB (20–47 €) / personne, transport parfois inclus.</p><p class="day-caveat">Horaires indicatifs, à adapter aux réservations, à la météo et aux trajets réels.</p></div></details></div></div></article>
+
+          <article class="day reveal" data-place="chiangmai" data-date="2026-12-17"><div class="day-date"><span>Jeu.</span><b>17</b><small>Déc.</small></div><div class="day-card"><figure class="day-media"><img loading="lazy" src="https://images.unsplash.com/photo-1512553840337-276c0d80a43a?auto=format&fit=crop&w=900&q=78" alt="Pagodes royales de Doi Inthanon" data-zoom><figcaption>Pagodes royales de Doi Inthanon</figcaption></figure><div class="day-body"><div class="day-meta"><span class="day-place">Chiang Mai · Doi Inthanon</span><span class="day-kind">Nature</span></div><h3>Le toit de la Thaïlande</h3><p>Journée au parc national : sommet, pagodes royales, cascades et paysages de montagne. Longue journée de route.</p><details class="day-details"><summary><span>Voir le programme détaillé</span><i aria-hidden="true"></i></summary><div class="day-detail-content"><ol><li><time>07h00</time><div><b>Départ Hang Dong</b><p>1 h 30 à 2 h de route.</p></div></li><li><time>09h00</time><div><b>Sommet de Doi Inthanon</b><p>Point culminant et sentier court.</p></div></li><li><time>10h30</time><div><b>Twin Royal Pagodas</b><p>Pagodes et jardins.</p></div></li><li><time>12h00</time><div><b>Déjeuner</b><p>Pause dans le parc.</p></div></li><li><time>13h00</time><div><b>Wachirathan Waterfall</b><p>Cascade et points de vue.</p></div></li><li><time>14h30</time><div><b>Autre arrêt nature</b><p>Selon tour et timing.</p></div></li><li><time>17h00–18h30</time><div><b>Retour</b><p>Soirée repos.</p></div></li></ol><p class="day-cost">Budget estimé : 1 500–2 300 THB (40–61 €) / personne en excursion groupée. En autonomie : environ 400 THB d'entrées principales + transport.</p><p class="day-caveat">Horaires indicatifs, à adapter aux réservations, à la météo et aux trajets réels.</p></div></details></div></div></article>
+
+          <article class="day reveal" data-place="chiangmai" data-date="2026-12-18"><div class="day-date"><span>Ven.</span><b>18</b><small>Déc.</small></div><div class="day-card"><figure class="day-media"><img loading="lazy" src="https://images.unsplash.com/photo-1608133013043-ec8c4965fa4d?auto=format&fit=crop&w=900&q=78" alt="Sanctuaire des éléphants" data-zoom><figcaption>Sanctuaire des éléphants</figcaption></figure><div class="day-body"><div class="day-meta"><span class="day-place">Chiang Mai · Sanctuaire</span><span class="day-kind">Éléphants</span></div><h3>Observer les éléphants</h3><p>Sanctuaire privilégiant l'observation, sans monte, spectacle ni baignade forcée. Vérifier les pratiques et le transport.</p><details class="day-details"><summary><span>Voir le programme détaillé</span><i aria-hidden="true"></i></summary><div class="day-detail-content"><ol><li><time>07h00–08h00</time><div><b>Pickup</b><p>Horaire selon sanctuaire.</p></div></li><li><time>Matinée</time><div><b>Découverte du sanctuaire</b><p>Observer sans interaction imposée.</p></div></li><li><time>12h00</time><div><b>Déjeuner</b><p>Souvent inclus en formule journée.</p></div></li><li><time>Après-midi</time><div><b>Suite de la visite</b><p>Respect du rythme des animaux.</p></div></li><li><time>15h00–16h30</time><div><b>Retour Hang Dong</b><p>Fin de journée libre.</p></div></li></ol><p class="day-cost">Budget estimé : 1 700–2 500 THB (45–66 €) / personne selon formule.</p><p class="day-caveat">Horaires indicatifs, à adapter aux réservations, à la météo et aux trajets réels.</p></div></details></div></div></article>
+
+          <article class="day reveal" data-place="bangkok" data-date="2026-12-19"><div class="day-date"><span>Sam.</span><b>19</b><small>Déc.</small></div><div class="day-card"><figure class="day-media"><img loading="lazy" src="https://images.unsplash.com/photo-1656299435456-41f88298b11c?auto=format&fit=crop&w=900&q=78" alt="Yaowarat, le Chinatown de Bangkok" data-zoom><figcaption>Yaowarat, le Chinatown de Bangkok</figcaption></figure><div class="day-body"><div class="day-meta"><span class="day-place">Chiang Mai → Bangkok</span><span class="day-kind">Vol &amp; street food</span></div><h3>Première soirée à Bangkok</h3><p>Vol vers Bangkok, installation au Somerset Sukhumvit 71 puis Chinatown si l'heure le permet.</p><details class="day-details"><summary><span>Voir le programme détaillé</span><i aria-hidden="true"></i></summary><div class="day-detail-content"><ol><li><time>Matin / midi</time><div><b>Vol Chiang Mai → Bangkok</b><p>Selon billet.</p></div></li><li><time>Après-midi</time><div><b>Transfert &amp; check-in</b><p>Prévoir taxi / navette vers BTS.</p></div></li><li><time>18h00</time><div><b>Départ Chinatown</b><p>Taxi ou transports selon trafic.</p></div></li><li><time>19h00</time><div><b>Yaowarat Road</b><p>Street food et balade.</p></div></li><li><time>21h00</time><div><b>Retour hôtel</b><p>Trajet selon circulation.</p></div></li></ol><p class="day-cost">Budget estimé : Repas et transports ; vol non inclus.</p><p class="day-caveat">Horaires indicatifs, à adapter aux réservations, à la météo et aux trajets réels.</p></div></details></div></div></article>
+
+          <article class="day reveal" data-place="bangkok" data-date="2026-12-20"><div class="day-date"><span>Dim.</span><b>20</b><small>Déc.</small></div><div class="day-card"><figure class="day-media"><img loading="lazy" src="https://images.unsplash.com/photo-1636455714535-b64a1308a655?auto=format&fit=crop&w=900&q=78" alt="Marché de Chatuchak" data-zoom><figcaption>Marché de Chatuchak</figcaption></figure><div class="day-body"><div class="day-meta"><span class="day-place">Bangkok · Chatuchak</span><span class="day-kind">Marché</span></div><h3>Chatuchak, le marché du dimanche</h3><p>Marché du week-end animé le dimanche. Entrée gratuite ; achats facultatifs.</p><details class="day-details"><summary><span>Voir le programme détaillé</span><i aria-hidden="true"></i></summary><div class="day-detail-content"><ol><li><time>08h30</time><div><b>Départ hôtel</b><p>Taxi / BTS-MRT selon trajet.</p></div></li><li><time>09h30</time><div><b>Chatuchak Weekend Market</b><p>Artisanat, vêtements et souvenirs.</p></div></li><li><time>12h30</time><div><b>Déjeuner</b><p>Street food sur place.</p></div></li><li><time>14h00</time><div><b>Chatuchak Park</b><p>Pause dans le parc, gratuit.</p></div></li><li><time>16h00</time><div><b>Retour hôtel</b><p>Repos.</p></div></li><li><time>Soir</time><div><b>Dîner libre</b><p>Selon envie.</p></div></li></ol><p class="day-cost">Budget estimé : Entrée gratuite ; repas, transports et achats en supplément.</p><p class="day-caveat">Horaires indicatifs, à adapter aux réservations, à la météo et aux trajets réels.</p></div></details></div></div></article>
+
+          <article class="day reveal" data-place="bangkok" data-date="2026-12-21"><div class="day-date"><span>Lun.</span><b>21</b><small>Déc.</small></div><div class="day-card"><figure class="day-media"><img loading="lazy" src="https://images.unsplash.com/photo-1563492065599-3520f775eeed?auto=format&fit=crop&w=900&q=78" alt="Grand Palace &amp; temples" data-zoom><figcaption>Grand Palace &amp; temples</figcaption></figure><div class="day-body"><div class="day-meta"><span class="day-place">Bangkok · Rattanakosin</span><span class="day-kind">Grands temples</span></div><h3>Grand Palace, Wat Pho &amp; Wat Arun</h3><p>Les trois sites se combinent à pied et en bateau. Commencer tôt ; tenue couvrant épaules et jambes.</p><details class="day-details"><summary><span>Voir le programme détaillé</span><i aria-hidden="true"></i></summary><div class="day-detail-content"><ol><li><time>08h30</time><div><b>Ouverture Grand Palace</b><p>Arriver dès l'ouverture.</p></div></li><li><time>08h30–10h45</time><div><b>Grand Palace &amp; Wat Phra Kaew</b><p>Prévoir environ 2 h.</p></div></li><li><time>11h00</time><div><b>Wat Pho</b><p>Bouddha couché et enceinte.</p></div></li><li><time>12h30</time><div><b>Déjeuner</b><p>Près du fleuve.</p></div></li><li><time>13h45</time><div><b>Ferry sur le Chao Phraya</b><p>Traversée vers Wat Arun.</p></div></li><li><time>14h00</time><div><b>Wat Arun</b><p>Temple de l'Aube et mosaïques.</p></div></li><li><time>15h30</time><div><b>Balade au fleuve</b><p>Fin de visite.</p></div></li></ol><p class="day-cost">Budget estimé : Entrées : 500 + 300 + 200 = 1 000 THB (environ 26 €) / personne, hors repas et transports.</p><p class="day-caveat">Horaires indicatifs, à adapter aux réservations, à la météo et aux trajets réels.</p></div></details></div></div></article>
+
+          <article class="day reveal" data-place="bangkok" data-date="2026-12-22"><div class="day-date"><span>Mar.</span><b>22</b><small>Déc.</small></div><div class="day-card"><figure class="day-media"><img loading="lazy" src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=900&q=78" alt="Derniers instants" data-zoom><figcaption>Derniers instants</figcaption></figure><div class="day-body"><div class="day-meta"><span class="day-place">Bangkok → France</span><span class="day-kind">Retour</span></div><h3>Derniers instants en Thaïlande</h3><p>Check-out et transfert vers l'aéroport. Gardez environ 3 h avant le vol international, plus marge trafic.</p><details class="day-details"><summary><span>Voir le programme détaillé</span><i aria-hidden="true"></i></summary><div class="day-detail-content"><ol><li><time>Selon vol</time><div><b>Petit-déjeuner &amp; check-out</b><p>Vérifier l'heure limite de l'hôtel.</p></div></li><li><time>Environ 4 h avant vol</time><div><b>Départ aéroport</b><p>Adapter à l'aéroport et au trafic.</p></div></li><li><time>3 h avant vol</time><div><b>Enregistrement</b><p>Retour vers la France.</p></div></li></ol><p class="day-cost">Budget estimé : Transfert aéroport et dépenses personnelles.</p><p class="day-caveat">Horaires indicatifs, à adapter aux réservations, à la météo et aux trajets réels.</p></div></details></div></div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 05 LA CARTE ===================== -->
+    <section class="section map-section" id="carte">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="section-kicker reveal">05 — Le parcours</div><h2 class="reveal">La Thaïlande<br><em>sur la carte.</em></h2></div>
+          <p class="reveal" style="--d:.1s">Les quatre bases du séjour, du sud vers le nord puis retour dans la capitale. Les liaisons aériennes intérieures sont prévues mais ne sont pas encore confirmées. Cliquez sur une étape pour zoomer.</p>
+        </div>
+        <div class="map-layout">
+          <div class="map-wrap reveal"><div id="travel-map" role="region" aria-label="Carte des quatre étapes du voyage"></div></div>
+          <div class="map-side">
+            <div class="map-stops" role="group" aria-label="Zoomer sur une étape">
+              <button type="button" class="map-stop" data-stop="0" style="--accent:#3f7f7a"><i>01</i><span><b>Phuket · Rawai</b><small>7–11 déc. · 4 nuits</small></span></button>
+              <button type="button" class="map-stop" data-stop="1" style="--accent:#4f7f97"><i>02</i><span><b>Khao Lak</b><small>11–14 déc. · 3 nuits</small></span></button>
+              <button type="button" class="map-stop" data-stop="2" style="--accent:#7d8a52"><i>03</i><span><b>Chiang Mai · Hang Dong</b><small>14–19 déc. · 5 nuits</small></span></button>
+              <button type="button" class="map-stop" data-stop="3" style="--accent:#c0874d"><i>04</i><span><b>Bangkok · Sukhumvit 71</b><small>19–22 déc. · 3 nuits</small></span></button>
+              <button type="button" class="map-stop map-all" data-stop="all"><i>↺</i><span><b>Tout le parcours</b><small>Vue d'ensemble</small></span></button>
+            </div>
+            <div class="route-summary">
+              <div><span>🚐</span><b>Rawai → Khao Lak</b><small>Route · env. 2h30 à 3h</small></div>
+              <div><span>✈️</span><b>Phuket → Chiang Mai</b><small>Vol intérieur · à réserver</small></div>
+              <div><span>✈️</span><b>Chiang Mai → Bangkok</b><small>Vol intérieur · à réserver</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 06 BUDGET ===================== -->
+    <section class="section budget" id="budget">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="section-kicker reveal">06 — Budget des sorties</div><h2 class="reveal">Combien prévoir<br><em>pour en profiter ?</em></h2></div>
+          <p class="reveal" style="--d:.1s">Estimations indicatives par personne, en groupe partagé. Les montants varient selon le bateau, les transferts, les frais de parc et les options. Conversion de travail : 1 € ≈ 38 ฿.</p>
+        </div>
+        <div class="budget-grid">
+          <article class="bcard bcard-option reveal"><span class="tag">Phuket · En option</span><h3>Krabi / 4 Islands ou Hong Islands</h3><strong>2 200–3 200 ฿</strong><small>≈ 58–84 € / personne</small><p>Option hors programme. Sortie à la journée ; depuis Phuket, c'est long : vérifier que le transfert jusqu'au départ est compris.</p></article>
+          <article class="bcard reveal" style="--d:.05s"><span class="tag">Phuket · 9 déc.</span><h3>Koh Phi Phi &amp; Maya Bay</h3><strong>2 000–3 100 ฿</strong><small>≈ 53–82 € / personne</small><p>Speedboat ou catamaran. Vérifier si les 400 ฿ de frais du parc national sont inclus.</p></article>
+          <article class="bcard reveal"><span class="tag">Phuket · 10 déc.</span><h3>James Bond Island / Phang Nga</h3><strong>1 700–2 800 ฿</strong><small>≈ 45–74 € / personne</small><p>Gros bateau ou speedboat, parfois canoë et déjeuner inclus. Frais de parc à confirmer.</p></article>
+          <article class="bcard reveal" style="--d:.05s"><span class="tag">Khao Lak · 12 déc.</span><h3>Îles Similan</h3><strong>2 300–3 600 ฿</strong><small>≈ 61–95 € / personne</small><p>Journée complète, transfert souvent inclus. Vérifier les 500 ฿ de frais de parc si non inclus.</p></article>
+          <article class="bcard reveal"><span class="tag">Chiang Mai · 16 déc.</span><h3>Cours de cuisine thaï</h3><strong>750–1 800 ฿</strong><small>≈ 20–47 € / personne</small><p>Souvent marché, ingrédients, plusieurs plats et parfois transport.</p></article>
+          <article class="bcard reveal" style="--d:.05s"><span class="tag">Chiang Mai · 17 déc.</span><h3>Doi Inthanon</h3><strong>1 500–2 300 ฿</strong><small>≈ 40–61 € / personne</small><p>Excursion groupée journée complète. Vérifier entrée du parc, déjeuner et transferts.</p></article>
+          <article class="bcard reveal"><span class="tag">Chiang Mai · 18 déc.</span><h3>Sanctuaire d'éléphants sans monte</h3><strong>1 700–2 500 ฿</strong><small>≈ 45–66 € / personne</small><p>Demi-journée ou journée. Privilégier observation et soins sans monte, spectacles ni baignade forcée.</p></article>
+          <article class="bcard bcard-option reveal" style="--d:.05s"><span class="tag">Chiang Mai · En option</span><h3>Doi Suthep &amp; Nimman</h3><strong>50–100 ฿</strong><small>≈ 1–3 € / personne</small><p>Option hors programme. Entrée du temple et petit transport local ; prévoir davantage si vous prenez un taxi privé.</p></article>
+          <article class="bcard reveal"><span class="tag">Bangkok · 20 déc.</span><h3>Chatuchak &amp; Jim Thompson House</h3><strong>250 ฿ + transport</strong><small>≈ 7 € / personne + trajets</small><p>Marché gratuit, au programme. Jim Thompson House est en option : environ 250 ฿ d'entrée.</p></article>
+          <article class="bcard reveal" style="--d:.05s"><span class="tag">Bangkok · 21 déc.</span><h3>Grand Palace + Wat Pho + Wat Arun</h3><strong>1 000 ฿</strong><small>≈ 26 € / personne</small><p>500 + 300 + 200 ฿ d'entrées, hors bateau, transports et éventuelle croisière.</p></article>
+        </div>
+        <div class="budget-total reveal"><div><span>Estimation pour les 3 voyageurs · activités du programme</span><strong>≈ 864–1 350 €</strong><small>Avec les trois options (Krabi, Doi Suthep &amp; Nimman, Jim Thompson House) : ≈ 1 062–1 630 €. Hors repas, shopping, vols intérieurs, transferts privés et extras. La croisière à Bangkok n'est pas incluse.</small></div></div>
+
+        <div class="calc reveal" id="calculateur">
+          <div class="calc-head">
+            <span class="kicker kicker-light">À vous de jouer</span>
+            <h3>Composez votre budget<br><em>d'excursions.</em></h3>
+            <p>Les activités du programme sont cochées ; les options sont à ajouter si elles vous tentent. Ajustez le nombre de voyageurs : le total se recalcule automatiquement.</p>
+            <div class="stepper" role="group" aria-label="Nombre de voyageurs">
+              <button type="button" data-step="-1" aria-label="Un voyageur de moins">−</button>
+              <output id="travellers-count" aria-live="polite">3 personnes</output>
+              <button type="button" data-step="1" aria-label="Un voyageur de plus">+</button>
+              <input id="travellers-range" type="hidden" value="3">
+            </div>
+          </div>
+          <div class="calc-panel">
+            <div class="calc-options">
+              <label class="pick"><input type="checkbox" data-min="2200" data-max="3200"><span><b>Krabi / 4 Islands ou Hong Islands</b><small>Option · 2 200–3 200 ฿</small></span></label>
+              <label class="pick"><input type="checkbox" checked data-min="2000" data-max="3100"><span><b>Koh Phi Phi &amp; Maya Bay</b><small>9 déc. · 2 000–3 100 ฿</small></span></label>
+              <label class="pick"><input type="checkbox" checked data-min="1700" data-max="2800"><span><b>James Bond Island / Phang Nga</b><small>10 déc. · 1 700–2 800 ฿</small></span></label>
+              <label class="pick"><input type="checkbox" checked data-min="2300" data-max="3600"><span><b>Îles Similan</b><small>12 déc. · 2 300–3 600 ฿</small></span></label>
+              <label class="pick"><input type="checkbox" checked data-min="750" data-max="1800"><span><b>Cours de cuisine thaï</b><small>16 déc. · 750–1 800 ฿</small></span></label>
+              <label class="pick"><input type="checkbox" checked data-min="1500" data-max="2300"><span><b>Doi Inthanon</b><small>17 déc. · 1 500–2 300 ฿</small></span></label>
+              <label class="pick"><input type="checkbox" checked data-min="1700" data-max="2500"><span><b>Sanctuaire d'éléphants</b><small>18 déc. · 1 700–2 500 ฿</small></span></label>
+              <label class="pick"><input type="checkbox" data-min="50" data-max="100"><span><b>Doi Suthep &amp; Nimman</b><small>Option · 50–100 ฿</small></span></label>
+              <label class="pick"><input type="checkbox" data-min="250" data-max="250"><span><b>Jim Thompson House</b><small>Option · 250 ฿</small></span></label>
+              <label class="pick"><input type="checkbox" checked data-min="1000" data-max="1000"><span><b>Grand Palace, Wat Pho &amp; Wat Arun</b><small>21 déc. · 1 000 ฿</small></span></label>
+            </div>
+            <div class="calc-result" aria-live="polite">
+              <span>Estimation pour le groupe</span>
+              <strong id="calc-euros">—</strong>
+              <small id="calc-baht">—</small>
+              <small id="calc-pp" class="calc-pp">—</small>
+              <small>Fourchette indicative, hors repas, transports et extras. Conversion : 1 € ≈ 38 ฿.</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="converter reveal">
+          <span class="kicker">Convertisseur express</span>
+          <div class="conv-row">
+            <label><input id="conv-eur" type="number" inputmode="decimal" min="0" step="1" value="10" aria-label="Montant en euros"><span>€</span></label>
+            <button type="button" class="conv-swap" id="conv-swap" aria-label="Exemples de montants">⇄</button>
+            <label><input id="conv-thb" type="number" inputmode="decimal" min="0" step="1" value="380" aria-label="Montant en bahts"><span>฿</span></label>
+          </div>
+          <small>Taux de travail 1 € ≈ 38 ฿, pas un taux de change garanti.</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 07 LE COIN DU CREW ===================== -->
+    <section class="section crew" id="crew">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="section-kicker reveal">07 — Le coin du crew</div><h2 class="reveal">Ce qui se passe<br><em>en Thaïlande…</em></h2></div>
+          <p class="reveal" style="--d:.1s">… reste sur ce site. Le bingo à remplir pendant le voyage, et le minimum vital pour parler thaï sans (trop) se ridiculiser.</p>
+        </div>
+
+        <div class="bingo-wrap">
+          <div class="bingo-side reveal">
+            <h3>Le bingo <em>du voyage.</em></h3>
+            <p>Seize défis à valider sur place. Une ligne complète, et c'est le dernier à avoir validé une case qui paie la tournée.</p>
+            <div class="bingo-score"><b id="bingo-count">0</b><span>/ 16 défis</span></div>
+            <div class="bingo-score"><b id="bingo-lines">0</b><span>ligne(s) complète(s)</span></div>
+            <button type="button" class="btn btn-ghost-dark btn-sm" id="bingo-reset">Remettre à zéro</button>
+            <small class="muted">Enregistré sur cet appareil uniquement.</small>
+          </div>
+          <div class="bingo reveal" id="bingo" role="group" aria-label="Grille de bingo">
+            <button type="button" aria-pressed="false"><i>🌅</i>Coucher de soleil au cap de Promthep</button>
+            <button type="button" aria-pressed="false"><i>🐠</i>Snorkeling avec des poissons</button>
+            <button type="button" aria-pressed="false"><i>🛺</i>Monter dans un tuk-tuk</button>
+            <button type="button" aria-pressed="false"><i>🌶️</i>Finir un plat « phet mak »</button>
+            <button type="button" aria-pressed="false"><i>🦗</i>Goûter un insecte grillé</button>
+            <button type="button" aria-pressed="false"><i>🥪</i>Croque du 7-Eleven à 2 h du mat'</button>
+            <button type="button" aria-pressed="false"><i>💆</i>Massage thaï</button>
+            <button type="button" aria-pressed="false"><i>🤢</i>Goûter le durian</button>
+            <button type="button" aria-pressed="false"><i>🥶</i>Avoir froid à Doi Inthanon</button>
+            <button type="button" aria-pressed="false"><i>🍜</i>Khao soi à Chiang Mai</button>
+            <button type="button" aria-pressed="false"><i>🤝</i>Négocier un prix au marché</button>
+            <button type="button" aria-pressed="false"><i>📸</i>Photo de groupe devant Wat Arun</button>
+            <button type="button" aria-pressed="false"><i>🍸</i>Un verre au Sky Bar</button>
+            <button type="button" aria-pressed="false"><i>🙏</i>« Khop khun khrap » au chauffeur</button>
+            <button type="button" aria-pressed="false"><i>⛴️</i>Bateau sur la Chao Phraya</button>
+            <button type="button" aria-pressed="false"><i>🥊</i>Voir un combat de muay thaï</button>
+          </div>
+        </div>
+
+        <div class="lexicon">
+          <div class="lexicon-head reveal">
+            <h3>Le petit <em>lexique.</em></h3>
+            <p>Touchez une carte pour la retourner. Les hommes terminent les phrases polies par <b>khrap</b>, les femmes par <b>kha</b>.</p>
+          </div>
+          <div class="lex-grid">
+            <button type="button" class="lex reveal" aria-pressed="false"><span class="lex-front"><b>Sawatdee khrap</b><small>สวัสดีครับ</small></span><span class="lex-back">Bonjour, salut</span></button>
+            <button type="button" class="lex reveal" style="--d:.04s" aria-pressed="false"><span class="lex-front"><b>Khop khun khrap</b><small>ขอบคุณครับ</small></span><span class="lex-back">Merci</span></button>
+            <button type="button" class="lex reveal" style="--d:.08s" aria-pressed="false"><span class="lex-front"><b>Mai pen rai</b><small>ไม่เป็นไร</small></span><span class="lex-back">Pas de souci, c'est rien</span></button>
+            <button type="button" class="lex reveal" style="--d:.12s" aria-pressed="false"><span class="lex-front"><b>Tao rai ?</b><small>เท่าไหร่</small></span><span class="lex-back">C'est combien ?</span></button>
+            <button type="button" class="lex reveal" aria-pressed="false"><span class="lex-front"><b>Mai phet</b><small>ไม่เผ็ด</small></span><span class="lex-back">Pas épicé (s'il vous plaît)</span></button>
+            <button type="button" class="lex reveal" style="--d:.04s" aria-pressed="false"><span class="lex-front"><b>Phet nit noi</b><small>เผ็ดนิดหน่อย</small></span><span class="lex-back">Un peu épicé</span></button>
+            <button type="button" class="lex reveal" style="--d:.08s" aria-pressed="false"><span class="lex-front"><b>Aroi mak !</b><small>อร่อยมาก</small></span><span class="lex-back">C'est délicieux !</span></button>
+            <button type="button" class="lex reveal" style="--d:.12s" aria-pressed="false"><span class="lex-front"><b>Check bin</b><small>เช็คบิล</small></span><span class="lex-back">L'addition, s'il vous plaît</span></button>
+            <button type="button" class="lex reveal" aria-pressed="false"><span class="lex-front"><b>Chon kaew !</b><small>ชนแก้ว</small></span><span class="lex-back">Santé ! (on trinque)</span></button>
+            <button type="button" class="lex reveal" style="--d:.04s" aria-pressed="false"><span class="lex-front"><b>Hong nam yu tee nai ?</b><small>ห้องน้ำอยู่ที่ไหน</small></span><span class="lex-back">Où sont les toilettes ?</span></button>
+            <button type="button" class="lex reveal" style="--d:.08s" aria-pressed="false"><span class="lex-front"><b>Lot noi dai mai ?</b><small>ลดหน่อยได้ไหม</small></span><span class="lex-back">Vous pouvez faire un petit prix ?</span></button>
+            <button type="button" class="lex reveal" aria-pressed="false"><span class="lex-front"><b>Mai sai moo</b><small>ไม่ใส่หมู</small></span><span class="lex-back">Sans porc, s'il vous plaît</span></button>
+            <button type="button" class="lex reveal" style="--d:.04s" aria-pressed="false"><span class="lex-front"><b>Gai</b><small>ไก่</small></span><span class="lex-back">Poulet</span></button>
+            <button type="button" class="lex reveal" style="--d:.08s" aria-pressed="false"><span class="lex-front"><b>Kung</b><small>กุ้ง</small></span><span class="lex-back">Crevettes</span></button>
+            <button type="button" class="lex reveal" aria-pressed="false"><span class="lex-front"><b>Neua</b><small>เนื้อ</small></span><span class="lex-back">Bœuf</span></button>
+            <button type="button" class="lex lex-star reveal" style="--d:.12s" aria-pressed="false"><span class="lex-front"><b>Mao khang</b><small>เมาค้าง</small></span><span class="lex-back">La gueule de bois. Le thème du voyage.</span></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 08 BOUFFE DU COIN ===================== -->
+    <section class="section food" id="bouffe">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="section-kicker reveal">08 — À table</div><h2 class="reveal">Bouffe<br><em>du coin.</em></h2></div>
+          <p class="reveal" style="--d:.1s">Les plats qu'on veut absolument goûter et une sélection d'adresses repérées autour de nos quatre bases. Les distances sont à vérifier selon le trajet exact : certaines adresses se rejoignent plus facilement en Grab ou en taxi.</p>
+        </div>
+        <div class="food-intro reveal"><span class="kicker">Le petit guide des gourmands</span><p>En Thaïlande, on mange dans la rue, au marché, dans les petites cantines et autour d'une grande table. L'idée : goûter un maximum de spécialités sans exploser le budget.</p></div>
+
+        <div class="dishes">
+          <article class="dish reveal"><figure><img loading="lazy" src="https://images.unsplash.com/photo-1637806930600-37fa8892069d?auto=format&fit=crop&w=800&q=75" alt="Pad thaï" data-zoom></figure><div><h3>Pad thaï</h3><p>Nouilles sautées, œuf, tofu ou crevettes, cacahuètes et citron vert. Le classique à tester au moins une fois.</p><div class="dish-tags"><small>≈ 60–120 ฿</small><span class="pork pork-maybe">Porc possible · prendre crevettes ou poulet</span></div></div></article>
+          <article class="dish reveal" style="--d:.06s"><figure><img loading="lazy" src="https://images.unsplash.com/photo-1555126634-323283e090fa?auto=format&fit=crop&w=800&q=75" alt="Bol de soupe de nouilles au curry" data-zoom></figure><div><h3>Khao soi</h3><p>Soupe du nord au curry et lait de coco, nouilles tendres et croustillantes. À ne surtout pas manquer à Chiang Mai.</p><div class="dish-tags"><small>≈ 60–100 ฿</small><span class="pork pork-maybe">Porc possible · souvent au poulet ou bœuf</span></div></div></article>
+          <article class="dish reveal" style="--d:.12s"><figure><img loading="lazy" src="https://images.unsplash.com/photo-1627308595186-e6bb36712645?auto=format&fit=crop&w=800&q=75" alt="Riz, viande sautée au basilic et œuf au plat" data-zoom></figure><div><h3>Pad kra pao</h3><p>Porc ou poulet sauté au basilic thaï, piment et ail, souvent servi avec du riz et un œuf au plat.</p><div class="dish-tags"><small>≈ 50–100 ฿</small><span class="pork pork-maybe">Souvent au porc · demander « gai » (poulet)</span></div></div></article>
+          <article class="dish reveal"><figure><img loading="lazy" src="https://images.unsplash.com/photo-1705234384751-84081009588e?auto=format&fit=crop&w=800&q=75" alt="Mangue et riz gluant" data-zoom></figure><div><h3>Mango sticky rice</h3><p>Mangue mûre, riz gluant et lait de coco sucré. Le dessert à partager… ou pas.</p><div class="dish-tags"><small>≈ 50–100 ฿</small><span class="pork pork-no">Sans porc</span></div></div></article>
+          <article class="dish reveal" style="--d:.06s"><figure><img loading="lazy" src="https://images.unsplash.com/photo-1761037994516-502ed10932b0?auto=format&fit=crop&w=800&q=75" alt="Soupe de crevettes épicée" data-zoom></figure><div><h3>Tom yum goong</h3><p>Soupe acidulée et épicée aux crevettes, citronnelle, galanga et feuilles de combava.</p><div class="dish-tags"><small>≈ 100–180 ฿</small><span class="pork pork-no">Sans porc</span></div></div></article>
+          <article class="dish reveal" style="--d:.12s"><figure><img loading="lazy" src="https://images.unsplash.com/photo-1679541946014-a47f1ec0dc1a?auto=format&fit=crop&w=800&q=75" alt="Table garnie de plats de fruits de mer" data-zoom></figure><div><h3>Fruits de mer grillés</h3><p>Poisson, calamars, crevettes et crabes : à privilégier sur la côte, surtout à Rawai.</p><div class="dish-tags"><small>Prix selon le poids</small><span class="pork pork-no">Sans porc</span></div></div></article>
+        </div>
+
+        <div class="picker reveal">
+          <div>
+            <span class="kicker kicker-light">Le dilemme du soir</span>
+            <h3>On mange <em>quoi ce soir ?</em></h3>
+            <p>Trois avis, zéro décision ? Laissez le hasard trancher.</p>
+            <label class="switch"><input type="checkbox" id="picker-nopork"><span class="switch-track" aria-hidden="true"></span><span>Tirage sans porc</span></label>
+          </div>
+          <div class="picker-out">
+            <div class="picker-window"><span id="picker-dish">?</span></div>
+            <span class="pork" id="picker-pork" hidden></span>
+            <small id="picker-note">Appuyez sur le bouton.</small>
+            <button type="button" class="btn btn-light" id="picker-btn" data-magnetic>Tirer au sort 🎲</button>
+          </div>
+        </div>
+
+        <div class="food-tabs reveal" role="tablist" aria-label="Adresses par étape">
+          <button type="button" role="tab" aria-selected="true" aria-controls="food-phuket" id="tab-phuket">Phuket</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="food-khaolak" id="tab-khaolak" tabindex="-1">Khao Lak</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="food-chiangmai" id="tab-chiangmai" tabindex="-1">Chiang Mai</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="food-bangkok" id="tab-bangkok" tabindex="-1">Bangkok</button>
+        </div>
+        <div class="food-panels">
+          <article class="food-stop" id="food-phuket" role="tabpanel" aria-labelledby="tab-phuket">
+            <div class="food-stop-head"><span class="tag">07—11 déc. · Rawai</span><span class="food-stop-number">01</span></div>
+            <h3>Phuket <em>— les saveurs du sud</em></h3>
+            <p class="food-area">Autour de Blue Palm Seafront Resort · Rawai</p>
+            <div class="food-place"><div><b>Salaloy Seafood</b><p>La valeur sûre pour les fruits de mer au bord de Rawai Beach. À goûter : crevettes grillées, calamars et salade de fruits de mer.</p><small>Poisson &amp; fruits de mer · budget moyen</small></div><a href="https://www.google.com/maps/search/?api=1&query=Salaloy+Seafood+Rawai+Phuket" target="_blank" rel="noopener">Carte ↗</a></div>
+            <div class="food-place"><div><b>Street Hut – Local Thai Food</b><p>Adresse décontractée pour manger thaï sans chichi, portions généreuses et plats classiques.</p><small>Cuisine thaï · bon rapport qualité-prix</small></div><a href="https://www.google.com/maps/search/?api=1&query=Street+Hut+Local+Thai+Food+Rawai" target="_blank" rel="noopener">Carte ↗</a></div>
+            <div class="food-place"><div><b>Mook Manee Seafood</b><p>Juste à côté du marché de poissons de Rawai : possibilité de choisir des produits de la mer et de les faire cuisiner. Demander le prix au kilo et les frais de cuisson avant de commander.</p><small>Expérience fruits de mer · prix variable</small></div><a href="https://www.google.com/maps/search/?api=1&query=Mook+Manee+Rawai" target="_blank" rel="noopener">Carte ↗</a></div>
+            <div class="food-tip">À ne pas rater : le marché de fruits de mer de Rawai et les spécialités du sud, souvent plus relevées.</div>
+          </article>
+          <article class="food-stop" id="food-khaolak" role="tabpanel" aria-labelledby="tab-khaolak" hidden>
+            <div class="food-stop-head"><span class="tag">11—14 déc. · Khao Lak</span><span class="food-stop-number">02</span></div>
+            <h3>Khao Lak <em>— marché &amp; seafood</em></h3>
+            <p class="food-area">Autour de Khaolak Relax Resort · secteur Khuk Khak / Bang Niang</p>
+            <div class="food-place"><div><b>Bang Niang Market</b><p>Le spot à faire pour picorer : brochettes moo ping, brochettes de fruits de mer, roti à la banane, fruits frais et mango sticky rice. Vérifier les jours d'ouverture sur place.</p><small>Street food · petits prix</small></div><a href="https://www.google.com/maps/search/?api=1&query=Bang+Niang+Market+Khao+Lak" target="_blank" rel="noopener">Carte ↗</a></div>
+            <div class="food-place"><div><b>Takiang Restaurant</b><p>Restaurant thaï apprécié dans le secteur de Bang Niang, pour un vrai repas assis. Currys, poisson et plats thaïs traditionnels.</p><small>Thaï · prix modérés</small></div><a href="https://www.google.com/maps/search/?api=1&query=Takiang+Restaurant+Bang+Niang+Khao+Lak" target="_blank" rel="noopener">Carte ↗</a></div>
+            <div class="food-place"><div><b>Khaolak Curry Thai Restaurant</b><p>Une adresse bien notée pour les currys, le pad thaï et une cuisine thaï plus relevée. Préciser le niveau de piment souhaité.</p><small>Thaï · budget raisonnable</small></div><a href="https://www.google.com/maps/search/?api=1&query=Khaolak+Curry+Thai+Restaurant" target="_blank" rel="noopener">Carte ↗</a></div>
+            <div class="food-tip">À goûter : moo ping (porc grillé), roti banane, curry du sud et poisson grillé.</div>
+          </article>
+          <article class="food-stop" id="food-chiangmai" role="tabpanel" aria-labelledby="tab-chiangmai" hidden>
+            <div class="food-stop-head"><span class="tag">14—19 déc. · Hang Dong</span><span class="food-stop-number">03</span></div>
+            <h3>Chiang Mai <em>— cuisine du nord</em></h3>
+            <p class="food-area">Autour de At Leaf Villa · Kad Farang, Hang Dong</p>
+            <div class="food-place"><div><b>Peth Lanna Restaurant</b><p>Une adresse de cuisine Lanna dans le complexe Kad Farang, pratique depuis la villa. Parfait pour découvrir plusieurs spécialités du nord.</p><small>Cuisine du nord · dans le secteur de l'hôtel</small></div><a href="https://www.google.com/maps/search/?api=1&query=Peth+Lanna+Restaurant+Kad+Farang" target="_blank" rel="noopener">Carte ↗</a></div>
+            <div class="food-place"><div><b>Huen Phen Restaurant 2</b><p>Une bonne piste pour goûter les classiques du nord : khao soi, saucisse sai ua et plats Lanna. Situé vers Nong Kwai / Hang Dong, prévoir un trajet.</p><small>Cuisine du nord · trajet en voiture</small></div><a href="https://www.google.com/maps/search/?api=1&query=Huen+Phen+Restaurant+2+Hang+Dong" target="_blank" rel="noopener">Carte ↗</a></div>
+            <div class="food-place"><div><b>Yummy Hang Dong</b><p>Petite adresse locale connue notamment pour son khao soi, avec une version au crabe à carapace molle signalée par les habitués.</p><small>Khao soi · déjeuner</small></div><a href="https://www.google.com/maps/search/?api=1&query=Yummy+Hang+Dong+Chiang+Mai" target="_blank" rel="noopener">Carte ↗</a></div>
+            <div class="food-tip">Le plat obligatoire ici : khao soi. Et pour les plus curieux, goûter la sai ua, saucisse parfumée aux herbes du nord.</div>
+          </article>
+          <article class="food-stop" id="food-bangkok" role="tabpanel" aria-labelledby="tab-bangkok" hidden>
+            <div class="food-stop-head"><span class="tag">19—22 déc. · Bangkok</span><span class="food-stop-number">04</span></div>
+            <h3>Bangkok <em>— street food non-stop</em></h3>
+            <p class="food-area">Autour de Somerset Sukhumvit 71 · Phra Khanong / Watthana</p>
+            <div class="food-place"><div><b>Rosmuemaepridi</b><p>Cuisine thaï familiale sur Sukhumvit 71, pratique dans le quartier. Une bonne option pour découvrir des plats maison et des recettes du sud.</p><small>Thaï maison · dans le quartier</small></div><a href="https://www.google.com/maps/search/?api=1&query=Rosmuemaepridi+Sukhumvit+71" target="_blank" rel="noopener">Carte ↗</a></div>
+            <div class="food-place"><div><b>Mahasamut Sukhumvit 71</b><p>Restaurant de fruits de mer et poissons, avec notamment des plats au crabe et du riz sauté aux fruits de mer.</p><small>Seafood · prix plus élevés qu'une cantine</small></div><a href="https://www.google.com/maps/search/?api=1&query=Mahasamut+Sukhumvit+71+Bangkok" target="_blank" rel="noopener">Carte ↗</a></div>
+            <div class="food-place"><div><b>Yaowarat / Chinatown</b><p>À intégrer à la soirée du 19 : brochettes, nouilles, fruits de mer, desserts et stands de rue à enchaîner au fil des rues.</p><small>Street food · beaucoup de choix</small></div><a href="https://www.google.com/maps/search/?api=1&query=Yaowarat+Road+Chinatown+Bangkok" target="_blank" rel="noopener">Carte ↗</a></div>
+            <div class="food-tip">À goûter : pad kra pao, tom yum goong, guay jub (soupe de nouilles roulées) et desserts à la noix de coco.</div>
+          </article>
+        </div>
+        <p class="food-disclaimer">Porc : beaucoup de plats se commandent avec la viande de son choix (poulet « gai », crevettes « kung », bœuf « neua »). Certains bouillons et sauces peuvent quand même en contenir : en cas de doute, dire « mai sai moo » (sans porc) et demander. Les prix sont des ordres de grandeur par plat, pas des tarifs garantis. Les horaires, jours d'ouverture et menus peuvent changer : vérifiez sur Google Maps avant de vous déplacer. Les adresses sont sélectionnées par zone, pas toutes à distance de marche de l'hôtel.</p>
+      </div>
+    </section>
+
+    <!-- ===================== 09 À SAVOIR ===================== -->
+    <section class="section practical" id="pratique">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="section-kicker reveal">09 — Avant de partir</div><h2 class="reveal">Les repères<br><em>à garder en tête.</em></h2></div>
+          <p class="reveal" style="--d:.1s">Les informations pratiques du voyage et les points à vérifier avant le départ.</p>
+        </div>
+        <div class="practical-grid">
+          <article class="pcard reveal"><span class="pcard-icon">✈</span><h3>Les vols intérieurs</h3><p>Priorité à la réservation des vols Phuket → Chiang Mai le 14 décembre et Chiang Mai → Bangkok le 19 décembre. Les horaires restent à choisir.</p></article>
+          <article class="pcard reveal" style="--d:.05s"><span class="pcard-icon">≈</span><h3>Les excursions en bateau</h3><p>Phi Phi, James Bond Island, Krabi et Similan se font en bateau. Les excursions incluent souvent une prise en charge à l'hôtel : à vérifier auprès de chaque prestataire.</p></article>
+          <article class="pcard reveal" style="--d:.1s"><span class="pcard-icon">☀</span><h3>Les îles Similan</h3><p>Ouverture saisonnière généralement de mi-octobre à mi-mai environ. Vérifier les dates officielles, la météo et l'état de la mer avant de réserver.</p></article>
+          <article class="pcard reveal"><span class="pcard-icon">⌁</span><h3>Se déplacer à Phuket</h3><p>Les déplacements sur l'île se font par la route. Comparer les tarifs des taxis avec Grab ou Bolt ; les taxis peuvent être chers.</p></article>
+          <article class="pcard reveal" style="--d:.05s"><span class="pcard-icon">◷</span><h3>Les marges de sécurité</h3><p>Prévoir suffisamment de temps pour rejoindre l'aéroport de Phuket le 14 décembre et une marge importante avant le vol international du 22 décembre.</p></article>
+          <article class="pcard reveal" style="--d:.1s"><span class="pcard-icon">✳</span><h3>Haute saison</h3><p>Décembre est une période très demandée. Réserver rapidement les vols et activités, en privilégiant si possible des conditions d'annulation flexibles.</p></article>
+        </div>
+
+        <div class="weather">
+          <h3 class="reveal">Météo &amp; valise <small>moyennes indicatives de décembre</small></h3>
+          <div class="weather-grid">
+            <article class="wcard wcard-sea reveal"><span>🏝️</span><b>Phuket &amp; Khao Lak</b><strong>≈ 25–32 °C</strong><p>Saison sèche, soleil et mer généralement plus calme. Maillot, chapeau, crème solaire sans oxybenzone : certains filtres sont interdits dans les parcs marins.</p></article>
+            <article class="wcard wcard-mountain reveal" style="--d:.06s"><span>⛰️</span><b>Chiang Mai</b><strong>≈ 15–29 °C</strong><p>Journées douces, nuits fraîches. Il peut faire froid au sommet de Doi Inthanon tôt le matin : polaire ou coupe-vent pour le 17.</p></article>
+            <article class="wcard wcard-city reveal" style="--d:.12s"><span>🌃</span><b>Bangkok</b><strong>≈ 24–32 °C</strong><p>Chaud et plutôt sec. Pour le Grand Palace : épaules et jambes couvertes, chaussures faciles à enlever.</p></article>
+          </div>
+        </div>
+
+        <div class="infos reveal">
+          <div><span>⏰</span><b>Décalage</b><p>+6 h par rapport à la France en décembre.</p></div>
+          <div><span>🚨</span><b>Urgences</b><p>Police touristique 1155 · ambulance 1669 · police 191.</p></div>
+          <div><span>💸</span><b>Argent</b><p>Le baht (฿). Les retraits aux distributeurs ont souvent des frais fixes : retirer moins souvent.</p></div>
+          <div><span>🔌</span><b>Prises</b><p>220 V. Un adaptateur universel évite les mauvaises surprises.</p></div>
+          <div><span>🛂</span><b>Entrée</b><p>Vérifier les conditions d'entrée et la carte d'arrivée numérique (TDAC) sur les sites officiels avant de partir.</p></div>
+          <div><span>📱</span><b>Applis</b><p>Grab et Bolt pour les trajets, Google Maps hors ligne pour chaque région.</p></div>
+        </div>
+
+        <div class="checklist reveal">
+          <div><span class="kicker">Petite checklist</span><h3>À réserver / confirmer</h3><div class="check-progress"><span id="check-fill"></span></div><small id="check-count" class="muted">0 / 9</small></div>
+          <ul>
+            <li><label><input type="checkbox"><span>Vol Phuket → Chiang Mai (14 déc.)</span></label></li>
+            <li><label><input type="checkbox"><span>Vol Chiang Mai → Bangkok (19 déc.)</span></label></li>
+            <li><label><input type="checkbox"><span>Excursion Krabi : 4 Islands ou Hong Islands (option)</span></label></li>
+            <li><label><input type="checkbox"><span>Excursion Koh Phi Phi</span></label></li>
+            <li><label><input type="checkbox"><span>James Bond Island / baie de Phang Nga</span></label></li>
+            <li><label><input type="checkbox"><span>Ouverture et excursion Similan</span></label></li>
+            <li><label><input type="checkbox"><span>Cours de cuisine à Chiang Mai</span></label></li>
+            <li><label><input type="checkbox"><span>Sanctuaire d'éléphants sans monte</span></label></li>
+            <li><label><input type="checkbox"><span>Conditions d'entrée et carte d'arrivée (TDAC)</span></label></li>
+          </ul>
+          <p class="check-note">Cette checklist est enregistrée dans le navigateur de l'appareil utilisé.</p>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="footer"><div class="footer-top"><a class="brand brand-footer" href="#accueil"><span class="brand-mark">T.</span><span>LE CARNET<br><small>DE VOYAGE</small></span></a><p>THAÏLANDE · DÉCEMBRE 2026<br><span>Trois voyageurs, quatre étapes, mille souvenirs à venir.</span></p><a href="#accueil" class="back-top">RETOUR EN HAUT ↑</a></div><div class="footer-bottom"><span>7 — 22 DÉCEMBRE 2026</span><span>FAIT AVEC SOIN POUR LE VOYAGE</span></div></footer>
+  <!-- ===================== PIED DE PAGE ===================== -->
+  <footer class="footer">
+    <div class="footer-big" aria-hidden="true">The <em>Hangover.</em></div>
+    <div class="footer-row">
+      <p>Thaïlande · 7 — 22 décembre 2026<br><span>Trois voyageurs, quatre étapes, mille souvenirs à venir.</span></p>
+      <a href="#accueil" class="back-top" data-magnetic>Retour en haut ↑</a>
+    </div>
+    <div class="footer-bottom"><span>Ce qui se passe en Thaïlande reste en Thaïlande.</span><span>Fait avec soin pour le voyage</span></div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="cursor" aria-hidden="true"><span class="cursor-ring"></span><span class="cursor-dot"></span></div>
+
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  <script src="script.js?v=20261115-4"></script>
+  <script src="script.js?v=20261126-r1"></script>
 </body>
 </html>
