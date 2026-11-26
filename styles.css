@@ -227,6 +227,14 @@ h2 em,h3 em{font-style:italic;font-weight:400;color:var(--sage-d)}
 .facts dt{font:700 11px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
 .facts dd{margin:4px 0 0;color:var(--ink-2);font-size:16px}
 .stage-links{display:flex;flex-wrap:wrap;gap:26px;margin-top:6px}
+/* Programme de l'étape : une ligne par jour, date en couleur */
+.prog{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:2px}
+.prog li{display:grid;grid-template-columns:78px 1fr;gap:12px;align-items:baseline;padding:7px 10px;border-radius:10px;transition:background .3s}
+.prog li:hover{background:color-mix(in srgb,var(--accent) 9%,transparent)}
+.prog b{font:700 12px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);white-space:nowrap}
+.prog span{color:var(--ink);font-size:16px;line-height:1.45}
+.stage-night .prog b{color:var(--gold)}
+.stage-night .prog span{color:var(--bg)}
 .nearby{grid-area:nearby}
 .nearby h4{font:500 clamp(26px,2.6vw,34px)/1.1 var(--serif);margin-bottom:22px;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px}
 .nearby h4 small{font:600 11px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
